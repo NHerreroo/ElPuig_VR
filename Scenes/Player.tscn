@@ -1,0 +1,39 @@
+[gd_scene load_steps=8 format=3 uid="uid://dob0785i5s1r6"]
+
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_keplv"]
+[ext_resource type="PackedScene" uid="uid://raeeicvvindd" path="res://addons/godot-xr-tools/hands/scenes/highpoly/right_hand.tscn" id="2_nb8sa"]
+[ext_resource type="PackedScene" uid="uid://bl2nuu3qhlb5k" path="res://addons/godot-xr-tools/functions/movement_direct.tscn" id="3_dyl4i"]
+[ext_resource type="PackedScene" uid="uid://njx823gyk04n" path="res://addons/godot-xr-tools/hands/scenes/highpoly/left_hand.tscn" id="3_p5p5g"]
+[ext_resource type="PackedScene" uid="uid://b6bk2pj8vbj28" path="res://addons/godot-xr-tools/functions/movement_turn.tscn" id="3_uerhj"]
+[ext_resource type="PackedScene" uid="uid://b4ysuy43poobf" path="res://addons/godot-xr-tools/functions/function_pickup.tscn" id="4_80cua"]
+[ext_resource type="PackedScene" uid="uid://diyu06cw06syv" path="res://addons/godot-xr-tools/player/player_body.tscn" id="5_qqokb"]
+
+[node name="XRNode3D" type="XROrigin3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.08175, 0)
+script = ExtResource("1_keplv")
+
+[node name="XRCamera3D" type="XRCamera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.297628, 0)
+
+[node name="XRControllerRight" type="XRController3D" parent="."]
+tracker = &"right_hand"
+
+[node name="RightHand" parent="XRControllerRight" instance=ExtResource("2_nb8sa")]
+
+[node name="MovementTurn" parent="XRControllerRight" instance=ExtResource("3_uerhj")]
+turn_mode = 2
+
+[node name="FunctionPickup" parent="XRControllerRight" instance=ExtResource("4_80cua")]
+
+[node name="XRControllerLeft" type="XRController3D" parent="."]
+tracker = &"left_hand"
+
+[node name="LeftHand" parent="XRControllerLeft" instance=ExtResource("3_p5p5g")]
+
+[node name="MovementDirect" parent="XRControllerLeft" instance=ExtResource("3_dyl4i")]
+strafe = true
+
+[node name="FunctionPickup2" parent="XRControllerLeft" instance=ExtResource("4_80cua")]
+
+[node name="PlayerBody" parent="." instance=ExtResource("5_qqokb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.396884, 0)

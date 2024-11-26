@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://crly10vkq3kob"
+path="res://.godot/imported/box-large-open.obj-4e812df5874b631f197a9fadb5abba28.mesh"
+
+[deps]
+
+files=["res://.godot/imported/box-large-open.obj-4e812df5874b631f197a9fadb5abba28.mesh"]
+
+source_file="res://KenneyAssets/kenney_survival-kit/Models/OBJ format/box-large-open.obj"
+dest_files=["res://.godot/imported/box-large-open.obj-4e812df5874b631f197a9fadb5abba28.mesh", "res://.godot/imported/box-large-open.obj-4e812df5874b631f197a9fadb5abba28.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

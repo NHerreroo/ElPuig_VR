@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://b3kc7e04ijfyf"
+path="res://.godot/imported/metal-panel-screws.obj-0026830e9b56e6a055b6305f2f45b862.mesh"
+
+[deps]
+
+files=["res://.godot/imported/metal-panel-screws.obj-0026830e9b56e6a055b6305f2f45b862.mesh"]
+
+source_file="res://KenneyAssets/kenney_survival-kit/Models/OBJ format/metal-panel-screws.obj"
+dest_files=["res://.godot/imported/metal-panel-screws.obj-0026830e9b56e6a055b6305f2f45b862.mesh", "res://.godot/imported/metal-panel-screws.obj-0026830e9b56e6a055b6305f2f45b862.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

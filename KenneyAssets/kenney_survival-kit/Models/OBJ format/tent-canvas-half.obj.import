@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bvjug3g4o4yfk"
+path="res://.godot/imported/tent-canvas-half.obj-03c9ee764daf58f7cdfa718e7d6240db.mesh"
+
+[deps]
+
+files=["res://.godot/imported/tent-canvas-half.obj-03c9ee764daf58f7cdfa718e7d6240db.mesh"]
+
+source_file="res://KenneyAssets/kenney_survival-kit/Models/OBJ format/tent-canvas-half.obj"
+dest_files=["res://.godot/imported/tent-canvas-half.obj-03c9ee764daf58f7cdfa718e7d6240db.mesh", "res://.godot/imported/tent-canvas-half.obj-03c9ee764daf58f7cdfa718e7d6240db.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

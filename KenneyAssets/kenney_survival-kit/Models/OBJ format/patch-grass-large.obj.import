@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://ykmunggwkths"
+path="res://.godot/imported/patch-grass-large.obj-13cdfc44de16760825a2c00bd3d523cc.mesh"
+
+[deps]
+
+files=["res://.godot/imported/patch-grass-large.obj-13cdfc44de16760825a2c00bd3d523cc.mesh"]
+
+source_file="res://KenneyAssets/kenney_survival-kit/Models/OBJ format/patch-grass-large.obj"
+dest_files=["res://.godot/imported/patch-grass-large.obj-13cdfc44de16760825a2c00bd3d523cc.mesh", "res://.godot/imported/patch-grass-large.obj-13cdfc44de16760825a2c00bd3d523cc.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

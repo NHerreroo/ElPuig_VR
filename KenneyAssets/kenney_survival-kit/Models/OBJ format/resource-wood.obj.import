@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://chafb43556ayr"
+path="res://.godot/imported/resource-wood.obj-5e6356d3a87b0330a296eadf64c347a9.mesh"
+
+[deps]
+
+files=["res://.godot/imported/resource-wood.obj-5e6356d3a87b0330a296eadf64c347a9.mesh"]
+
+source_file="res://KenneyAssets/kenney_survival-kit/Models/OBJ format/resource-wood.obj"
+dest_files=["res://.godot/imported/resource-wood.obj-5e6356d3a87b0330a296eadf64c347a9.mesh", "res://.godot/imported/resource-wood.obj-5e6356d3a87b0330a296eadf64c347a9.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

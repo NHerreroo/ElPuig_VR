@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://ys5q0x3cgb0t"
+path="res://.godot/imported/signpost-single.obj-8dfe4fedfbea3899df11aeb88a4531af.mesh"
+
+[deps]
+
+files=["res://.godot/imported/signpost-single.obj-8dfe4fedfbea3899df11aeb88a4531af.mesh"]
+
+source_file="res://KenneyAssets/kenney_survival-kit/Models/OBJ format/signpost-single.obj"
+dest_files=["res://.godot/imported/signpost-single.obj-8dfe4fedfbea3899df11aeb88a4531af.mesh", "res://.godot/imported/signpost-single.obj-8dfe4fedfbea3899df11aeb88a4531af.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

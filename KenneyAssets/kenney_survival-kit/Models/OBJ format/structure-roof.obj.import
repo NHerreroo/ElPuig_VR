@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bq2dhngy7eajf"
+path="res://.godot/imported/structure-roof.obj-44161c9fd36fb2a02d451c84d1d1fa2e.mesh"
+
+[deps]
+
+files=["res://.godot/imported/structure-roof.obj-44161c9fd36fb2a02d451c84d1d1fa2e.mesh"]
+
+source_file="res://KenneyAssets/kenney_survival-kit/Models/OBJ format/structure-roof.obj"
+dest_files=["res://.godot/imported/structure-roof.obj-44161c9fd36fb2a02d451c84d1d1fa2e.mesh", "res://.godot/imported/structure-roof.obj-44161c9fd36fb2a02d451c84d1d1fa2e.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

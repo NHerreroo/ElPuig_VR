@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://b75xj72ymmn0b"
+path="res://.godot/imported/metal-panel-narrow.obj-eb7579fcbfe181c1e1ed8b2ed15c6652.mesh"
+
+[deps]
+
+files=["res://.godot/imported/metal-panel-narrow.obj-eb7579fcbfe181c1e1ed8b2ed15c6652.mesh"]
+
+source_file="res://KenneyAssets/kenney_survival-kit/Models/OBJ format/metal-panel-narrow.obj"
+dest_files=["res://.godot/imported/metal-panel-narrow.obj-eb7579fcbfe181c1e1ed8b2ed15c6652.mesh", "res://.godot/imported/metal-panel-narrow.obj-eb7579fcbfe181c1e1ed8b2ed15c6652.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false
