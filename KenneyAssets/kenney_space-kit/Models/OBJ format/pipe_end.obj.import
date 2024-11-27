@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://d33eqcetu4utb"
+path="res://.godot/imported/pipe_end.obj-71131e0aca8eaa442c78b0326431552c.mesh"
+
+[deps]
+
+files=["res://.godot/imported/pipe_end.obj-71131e0aca8eaa442c78b0326431552c.mesh"]
+
+source_file="res://KenneyAssets/kenney_space-kit/Models/OBJ format/pipe_end.obj"
+dest_files=["res://.godot/imported/pipe_end.obj-71131e0aca8eaa442c78b0326431552c.mesh", "res://.godot/imported/pipe_end.obj-71131e0aca8eaa442c78b0326431552c.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

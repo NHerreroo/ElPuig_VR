@@ -1,0 +1,49 @@
+[gd_scene load_steps=9 format=3 uid="uid://da8mhmsg4bo36"]
+
+[ext_resource type="PackedScene" uid="uid://c8l60rnugru40" path="res://addons/godot-xr-tools/objects/pickable.tscn" id="1_yxns3"]
+[ext_resource type="Script" path="res://Scenes/Games/Pipes/script_attached.gd" id="2_bf6bw"]
+[ext_resource type="PackedScene" uid="uid://c25yxb0vt53vc" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_left.tscn" id="3_417xw"]
+[ext_resource type="PackedScene" uid="uid://ctw7nbntd5pcj" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_right.tscn" id="4_dr1br"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_j6yv0"]
+size = Vector3(0.3, 0.3, 0.3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qajn3"]
+albedo_color = Color(0.34644, 0.511851, 0.946937, 1)
+albedo_texture_msdf = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_hw8ju"]
+size = Vector3(0.3, 0.3, 0.3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_th58b"]
+size = Vector3(0.3, 0.3, 0.3)
+
+[node name="PickableObject" instance=ExtResource("1_yxns3")]
+
+[node name="ScriptAttached" type="Node3D" parent="." index="0"]
+script = ExtResource("2_bf6bw")
+
+[node name="CollisionShape3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0318162, 0.0030843, -0.00829661)
+shape = SubResource("BoxShape3D_j6yv0")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="2"]
+material_override = SubResource("StandardMaterial3D_qajn3")
+mesh = SubResource("BoxMesh_hw8ju")
+
+[node name="Label3D" type="Label3D" parent="." index="3"]
+transform = Transform3D(0.506286, 0, 0, 0, 0.506286, 0, 0, 0, 0.506286, 0, 0.244802, 0.0129877)
+text = "192.154.123.23"
+
+[node name="Area3D" type="Area3D" parent="." index="4"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0"]
+shape = SubResource("BoxShape3D_th58b")
+
+[node name="GrabPointHandRight" parent="." index="5" instance=ExtResource("4_dr1br")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.161696, 0, -0.0343819)
+editor_preview_mode = 1
+
+[node name="GrabPointHandLeft" parent="." index="6" instance=ExtResource("3_417xw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.162388, 0, -0.0343819)
+editor_preview_mode = 1

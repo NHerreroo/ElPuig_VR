@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://pvc22qfr5qpx"
+path="res://.godot/imported/rock_crystals.obj-9c0da75e34f6b1d689ce98173568235a.mesh"
+
+[deps]
+
+files=["res://.godot/imported/rock_crystals.obj-9c0da75e34f6b1d689ce98173568235a.mesh"]
+
+source_file="res://KenneyAssets/kenney_space-kit/Models/OBJ format/rock_crystals.obj"
+dest_files=["res://.godot/imported/rock_crystals.obj-9c0da75e34f6b1d689ce98173568235a.mesh", "res://.godot/imported/rock_crystals.obj-9c0da75e34f6b1d689ce98173568235a.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

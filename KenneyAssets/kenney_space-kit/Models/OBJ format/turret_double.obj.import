@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cbsjmyv6ybbx6"
+path="res://.godot/imported/turret_double.obj-0bdfbb81515630ac3f1060a929d8ba45.mesh"
+
+[deps]
+
+files=["res://.godot/imported/turret_double.obj-0bdfbb81515630ac3f1060a929d8ba45.mesh"]
+
+source_file="res://KenneyAssets/kenney_space-kit/Models/OBJ format/turret_double.obj"
+dest_files=["res://.godot/imported/turret_double.obj-0bdfbb81515630ac3f1060a929d8ba45.mesh", "res://.godot/imported/turret_double.obj-0bdfbb81515630ac3f1060a929d8ba45.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

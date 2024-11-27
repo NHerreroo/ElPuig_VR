@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://c2m5iq50fjjl8"
+path="res://.godot/imported/pipe_ringSupport.obj-82b1e23f886928c711d27a185b53435f.mesh"
+
+[deps]
+
+files=["res://.godot/imported/pipe_ringSupport.obj-82b1e23f886928c711d27a185b53435f.mesh"]
+
+source_file="res://KenneyAssets/kenney_space-kit/Models/OBJ format/pipe_ringSupport.obj"
+dest_files=["res://.godot/imported/pipe_ringSupport.obj-82b1e23f886928c711d27a185b53435f.mesh", "res://.godot/imported/pipe_ringSupport.obj-82b1e23f886928c711d27a185b53435f.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

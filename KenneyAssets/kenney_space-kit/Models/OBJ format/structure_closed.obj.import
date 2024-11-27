@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://jvjxq08a3603"
+path="res://.godot/imported/structure_closed.obj-dfdf1a7014429dbe1b5b34404703076d.mesh"
+
+[deps]
+
+files=["res://.godot/imported/structure_closed.obj-dfdf1a7014429dbe1b5b34404703076d.mesh"]
+
+source_file="res://KenneyAssets/kenney_space-kit/Models/OBJ format/structure_closed.obj"
+dest_files=["res://.godot/imported/structure_closed.obj-dfdf1a7014429dbe1b5b34404703076d.mesh", "res://.godot/imported/structure_closed.obj-dfdf1a7014429dbe1b5b34404703076d.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

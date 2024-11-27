@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dob0785i5s1r6"]
+[gd_scene load_steps=10 format=3 uid="uid://dob0785i5s1r6"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_keplv"]
 [ext_resource type="PackedScene" uid="uid://raeeicvvindd" path="res://addons/godot-xr-tools/hands/scenes/highpoly/right_hand.tscn" id="2_nb8sa"]
@@ -7,6 +7,13 @@
 [ext_resource type="PackedScene" uid="uid://b6bk2pj8vbj28" path="res://addons/godot-xr-tools/functions/movement_turn.tscn" id="3_uerhj"]
 [ext_resource type="PackedScene" uid="uid://b4ysuy43poobf" path="res://addons/godot-xr-tools/functions/function_pickup.tscn" id="4_80cua"]
 [ext_resource type="PackedScene" uid="uid://diyu06cw06syv" path="res://addons/godot-xr-tools/player/player_body.tscn" id="5_qqokb"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ulgh2"]
+albedo_color = Color(0.647962, 0.313708, 0.00618365, 1)
+distance_fade_mode = 2
+distance_fade_max_distance = 1.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ifmmo"]
 
 [node name="XRNode3D" type="XROrigin3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.08175, 0)
@@ -20,6 +27,11 @@ tracker = &"right_hand"
 
 [node name="RightHand" parent="XRControllerRight" instance=ExtResource("2_nb8sa")]
 
+[node name="MeshInstance3D" type="MeshInstance3D" parent="XRControllerRight/RightHand"]
+transform = Transform3D(0.00430973, 0, -0.000147804, -0.00015027, -0.00629002, -0.00423884, -9.4682e-07, 0.998294, -2.6708e-05, -0.0534354, -0.0541265, -0.990885)
+material_override = SubResource("StandardMaterial3D_ulgh2")
+mesh = SubResource("CylinderMesh_ifmmo")
+
 [node name="MovementTurn" parent="XRControllerRight" instance=ExtResource("3_uerhj")]
 turn_mode = 2
 
@@ -27,6 +39,12 @@ turn_mode = 2
 
 [node name="XRControllerLeft" type="XRController3D" parent="."]
 tracker = &"left_hand"
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="XRControllerLeft"]
+transform = Transform3D(0.00430973, 0, -0.000147804, -0.00015027, -0.00629002, -0.00423884, -9.4682e-07, 0.998294, -2.6708e-05, -0.0534354, -0.0541265, -0.990885)
+material_override = SubResource("StandardMaterial3D_ulgh2")
+mesh = SubResource("CylinderMesh_ifmmo")
+skeleton = NodePath("../../XRControllerRight/RightHand")
 
 [node name="LeftHand" parent="XRControllerLeft" instance=ExtResource("3_p5p5g")]
 

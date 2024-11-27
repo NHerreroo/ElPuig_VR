@@ -2,7 +2,7 @@
 class_name XRToolsPickable
 extends RigidBody3D
 
-
+	
 ## XR Tools Pickable Object
 ##
 ## This script allows a [RigidBody3D] to be picked up by an
@@ -398,3 +398,5 @@ func _get_grab_point(grabber : Node3D, current : XRToolsGrabPoint) -> XRToolsGra
 func _set_ranged_grab_method(new_value: int) -> void:
 	ranged_grab_method = new_value
 	can_ranged_grab = new_value != RangedMethod.NONE
+	
+	
