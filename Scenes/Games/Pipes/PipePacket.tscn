@@ -47,3 +47,5 @@ editor_preview_mode = 1
 [node name="GrabPointHandLeft" parent="." index="6" instance=ExtResource("3_417xw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.162388, 0, -0.0343819)
 editor_preview_mode = 1
+
+[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]

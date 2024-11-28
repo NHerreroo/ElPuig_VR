@@ -400,3 +400,16 @@ func _set_ranged_grab_method(new_value: int) -> void:
 	can_ranged_grab = new_value != RangedMethod.NONE
 	
 	
+
+
+func _on_area_3d_area_entered(area: Area3D) -> void:
+	if area.is_in_group("PUBLICA"):
+		if Global.current_packet_type == "publica":
+			Global.score += randi_range(20,40)
+	Global.is_packet_instanciated = false
+	queue_free()
+	if area.is_in_group("PRIVADA"):
+		if Global.current_packet_type == "privada":
+			Global.score += randi_range(20,40)
+		Global.is_packet_instanciated = false
+		queue_free()
