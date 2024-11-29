@@ -1,57 +1,53 @@
 [gd_scene load_steps=10 format=3 uid="uid://dob0785i5s1r6"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_keplv"]
-[ext_resource type="PackedScene" uid="uid://raeeicvvindd" path="res://addons/godot-xr-tools/hands/scenes/highpoly/right_hand.tscn" id="2_nb8sa"]
 [ext_resource type="PackedScene" uid="uid://bl2nuu3qhlb5k" path="res://addons/godot-xr-tools/functions/movement_direct.tscn" id="3_dyl4i"]
-[ext_resource type="PackedScene" uid="uid://njx823gyk04n" path="res://addons/godot-xr-tools/hands/scenes/highpoly/left_hand.tscn" id="3_p5p5g"]
+[ext_resource type="PackedScene" uid="uid://bpdj5njb8nhot" path="res://addons/godot-xr-tools/hands/scenes/highpoly/left_fullglove_hand.tscn" id="3_q8fc3"]
 [ext_resource type="PackedScene" uid="uid://b6bk2pj8vbj28" path="res://addons/godot-xr-tools/functions/movement_turn.tscn" id="3_uerhj"]
 [ext_resource type="PackedScene" uid="uid://b4ysuy43poobf" path="res://addons/godot-xr-tools/functions/function_pickup.tscn" id="4_80cua"]
 [ext_resource type="PackedScene" uid="uid://diyu06cw06syv" path="res://addons/godot-xr-tools/player/player_body.tscn" id="5_qqokb"]
+[ext_resource type="PackedScene" uid="uid://d1tl07geqm5xq" path="res://addons/godot-xr-tools/hands/scenes/highpoly/right_fullglove_hand.tscn" id="6_oigpv"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ulgh2"]
-albedo_color = Color(0.647962, 0.313708, 0.00618365, 1)
-distance_fade_mode = 2
-distance_fade_max_distance = 1.0
+[sub_resource type="CylinderMesh" id="CylinderMesh_mv60h"]
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_ifmmo"]
+[sub_resource type="CylinderMesh" id="CylinderMesh_0vlmr"]
 
 [node name="XRNode3D" type="XROrigin3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.08175, 0)
 script = ExtResource("1_keplv")
 
 [node name="XRCamera3D" type="XRCamera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.297628, 0)
+fov = 103.9
+
+[node name="XRControllerLeft" type="XRController3D" parent="."]
+tracker = &"left_hand"
+
+[node name="LeftHand" parent="XRControllerLeft" instance=ExtResource("3_q8fc3")]
+
+[node name="MovementDirect" parent="XRControllerLeft" instance=ExtResource("3_dyl4i")]
+strafe = true
+
+[node name="FunctionPickup" parent="XRControllerLeft" instance=ExtResource("4_80cua")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="XRControllerLeft"]
+transform = Transform3D(0.00438448, 0, 0, 0, -3.33587e-08, 0.00438448, 0, -0.763158, -1.91652e-10, 0, 0, -0.8161)
+mesh = SubResource("CylinderMesh_mv60h")
 
 [node name="XRControllerRight" type="XRController3D" parent="."]
 tracker = &"right_hand"
 
-[node name="RightHand" parent="XRControllerRight" instance=ExtResource("2_nb8sa")]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="XRControllerRight/RightHand"]
-transform = Transform3D(0.00430973, 0, -0.000147804, -0.00015027, -0.00629002, -0.00423884, -9.4682e-07, 0.998294, -2.6708e-05, -0.0534354, -0.0541265, -0.990885)
-material_override = SubResource("StandardMaterial3D_ulgh2")
-mesh = SubResource("CylinderMesh_ifmmo")
+[node name="RightHand" parent="XRControllerRight" instance=ExtResource("6_oigpv")]
 
 [node name="MovementTurn" parent="XRControllerRight" instance=ExtResource("3_uerhj")]
 turn_mode = 2
 
 [node name="FunctionPickup" parent="XRControllerRight" instance=ExtResource("4_80cua")]
 
-[node name="XRControllerLeft" type="XRController3D" parent="."]
-tracker = &"left_hand"
-
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="XRControllerLeft"]
-transform = Transform3D(0.00430973, 0, -0.000147804, -0.00015027, -0.00629002, -0.00423884, -9.4682e-07, 0.998294, -2.6708e-05, -0.0534354, -0.0541265, -0.990885)
-material_override = SubResource("StandardMaterial3D_ulgh2")
-mesh = SubResource("CylinderMesh_ifmmo")
-skeleton = NodePath("../../XRControllerRight/RightHand")
-
-[node name="LeftHand" parent="XRControllerLeft" instance=ExtResource("3_p5p5g")]
-
-[node name="MovementDirect" parent="XRControllerLeft" instance=ExtResource("3_dyl4i")]
-strafe = true
-
-[node name="FunctionPickup2" parent="XRControllerLeft" instance=ExtResource("4_80cua")]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="XRControllerRight"]
+transform = Transform3D(0.004, 0, 0, 0, -3.32207e-08, 0.004, 0, -0.76, -1.74846e-10, 0, 0, -0.787843)
+mesh = SubResource("CylinderMesh_0vlmr")
 
 [node name="PlayerBody" parent="." instance=ExtResource("5_qqokb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.396884, 0)
+player_height_min = 0.0
+player_height_max = 2.0

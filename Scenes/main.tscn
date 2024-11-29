@@ -1,6 +1,5 @@
-[gd_scene load_steps=16 format=3 uid="uid://7ltqogxgms3e"]
+[gd_scene load_steps=15 format=3 uid="uid://7ltqogxgms3e"]
 
-[ext_resource type="PackedScene" uid="uid://dob0785i5s1r6" path="res://Scenes/Player.tscn" id="1_ha0sw"]
 [ext_resource type="PackedScene" uid="uid://bmea15g3rg5tw" path="res://KenneyAssets/kenney_survival-kit/Models/FBX format/rock-a.fbx" id="2_spfsp"]
 [ext_resource type="PackedScene" uid="uid://u40ukx6o8rmd" path="res://KenneyAssets/kenney_survival-kit/Models/FBX format/rock-b.fbx" id="3_0onvh"]
 [ext_resource type="PackedScene" uid="uid://bonsfxah44o8c" path="res://KenneyAssets/kenney_survival-kit/Models/FBX format/rock-c.fbx" id="4_nit4p"]
@@ -30,9 +29,7 @@ size = Vector3(100, 1, 100)
 size = Vector3(1, 11.8081, 18.5604)
 
 [node name="Main" type="Node3D"]
-
-[node name="XRNode3D" parent="." instance=ExtResource("1_ha0sw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.92029, 1.08175, 7.98908)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="Vegetation" type="Node3D" parent="."]
 transform = Transform3D(3.83052, 0, 0, 0, 3.83052, 0, 0, 0, 3.83052, 0, -1.33278, 0)

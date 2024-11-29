@@ -9,28 +9,32 @@ func _ready() -> void:
 	Global.is_packet_instanciated = true
 	var type = chose_ip_type()
 	var res
+	Global.is_correct = null
+
+
 	if type == 0:
 		res = str(generate_private_ip())
 		$"../Label3D".text = res
-		print(res + " esta ip es privada")
+		print(res + " esta IP es privada")
 		Global.current_packet_type = "privada"
-		
-		
-	if type == 1:
+
+	elif type == 1:
 		res = str(generate_public_ip())
 		$"../Label3D".text = res
-		print(res + " esta ip es publica")
+		print(res + " esta IP es pública")
 		Global.current_packet_type = "publica"
-		
-	
+
+	elif type == 2:
+		res = str(generate_invalid_ip())
+		$"../Label3D".text = res
+		print(res + " esta IP es inválida")
+		Global.current_packet_type = "invalida"
+
 func generate_random_num():
-	var numbergenerated
-	numbergenerated = randi_range(0, 255)
-	return numbergenerated
-	
+	return randi_range(0, 255)
+
 func chose_ip_type():
-	var res = randi_range(0,1)
-	return res
+	return randi_range(0, 2)  # 0: privada, 1: pública, 2: inválida
 
 func generate_private_ip() -> Array:
 	var private_ip = []
@@ -59,3 +63,13 @@ func generate_public_ip() -> Array:
 		if ip[0] > 0 and ip[0] < 224 and not is_private_ip(ip):
 			return ip
 	return ip
+
+func generate_invalid_ip():
+	var type = randi_range(0, 2)
+	if type == 0:
+		return [0, generate_random_num(), generate_random_num(), generate_random_num()]  # Dirección de red
+	elif type == 1:
+		return [127, generate_random_num(), generate_random_num(), generate_random_num()]  # Loopback
+	elif type == 2:
+		return [randi_range(224, 255), generate_random_num(), generate_random_num(), generate_random_num()]
+	return # Clase D o E

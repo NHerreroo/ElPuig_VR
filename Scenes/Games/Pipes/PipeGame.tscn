@@ -1,7 +1,6 @@
-[gd_scene load_steps=27 format=3 uid="uid://bm3l3w375xf5o"]
+[gd_scene load_steps=37 format=3 uid="uid://bm3l3w375xf5o"]
 
 [ext_resource type="Script" path="res://Scenes/Games/Pipes/pipe_game.gd" id="1_1wwfm"]
-[ext_resource type="PackedScene" uid="uid://dob0785i5s1r6" path="res://Scenes/Player.tscn" id="1_dxn0a"]
 [ext_resource type="PackedScene" uid="uid://bmea15g3rg5tw" path="res://KenneyAssets/kenney_survival-kit/Models/FBX format/rock-a.fbx" id="2_5gcb1"]
 [ext_resource type="PackedScene" uid="uid://u40ukx6o8rmd" path="res://KenneyAssets/kenney_survival-kit/Models/FBX format/rock-b.fbx" id="3_g3ca5"]
 [ext_resource type="PackedScene" uid="uid://bonsfxah44o8c" path="res://KenneyAssets/kenney_survival-kit/Models/FBX format/rock-c.fbx" id="4_eugfh"]
@@ -18,7 +17,16 @@
 [ext_resource type="PackedScene" uid="uid://c5360ehufh28w" path="res://KenneyAssets/kenney_space-kit/Models/DAE format/hangar_roundA.dae" id="14_3dtij"]
 [ext_resource type="PackedScene" uid="uid://d3vxfcnwvvx0c" path="res://KenneyAssets/kenney_space-kit/Models/DAE format/chimney_detailed.dae" id="16_4u2h5"]
 [ext_resource type="PackedScene" uid="uid://fdmhwb0ujfud" path="res://KenneyAssets/kenney_space-kit/Models/DAE format/craft_miner.dae" id="17_bl4rc"]
+[ext_resource type="PackedScene" uid="uid://uas1kcpxhlpx" path="res://KenneyAssets/kenney_space-kit/Models/DAE format/monorail_trackStraight.dae" id="18_a0s6w"]
 [ext_resource type="PackedScene" uid="uid://dl6so08x1yfdm" path="res://KenneyAssets/kenney_space-kit/Models/DAE format/alien.dae" id="18_edtvj"]
+[ext_resource type="PackedScene" uid="uid://4m0gkwuw0pcr" path="res://KenneyAssets/kenney_space-kit/Models/DAE format/platform_large.dae" id="19_k4xcs"]
+[ext_resource type="PackedScene" uid="uid://c1phxdr3u38qn" path="res://KenneyAssets/kenney_space-kit/Models/DAE format/corridor_open.dae" id="20_d1nqm"]
+[ext_resource type="PackedScene" uid="uid://hxpkjw0s6f7s" path="res://KenneyAssets/kenney_space-kit/Models/DAE format/rock_crystalsLargeB.dae" id="20_g0bmr"]
+[ext_resource type="PackedScene" uid="uid://dlkuop3glohek" path="res://KenneyAssets/kenney_space-kit/Models/DAE format/corridor_wall.dae" id="21_kvr00"]
+[ext_resource type="PackedScene" uid="uid://k2ewet4dny0x" path="res://KenneyAssets/kenney_space-kit/Models/DAE format/rock_largeA.dae" id="21_pe73p"]
+[ext_resource type="AudioStream" uid="uid://dte77gyvhtkhg" path="res://Sounds/Correct.mp3" id="26_r12lq"]
+[ext_resource type="PackedScene" uid="uid://dob0785i5s1r6" path="res://Scenes/Player.tscn" id="27_7ytna"]
+[ext_resource type="AudioStream" uid="uid://ceveawdq1py14" path="res://Sounds/Incorrect.mp3" id="27_tp6ph"]
 
 [sub_resource type="Environment" id="Environment_gki4l"]
 background_mode = 1
@@ -39,19 +47,30 @@ size = Vector3(100, 1, 100)
 size = Vector3(1, 11.8081, 18.5604)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_7rxju"]
-height = 0.270742
-radius = 0.0999873
+height = 0.282904
+radius = 0.0833928
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mws6h"]
-size = Vector3(1, 0.102051, 0.86853)
+size = Vector3(1.29407, 0.102051, 1.44695)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_50duv"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_lknxl"]
 
 [node name="Main" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 script = ExtResource("1_1wwfm")
 
-[node name="Score" type="Label3D" parent="."]
-transform = Transform3D(-2.11981, 0, -2.24784, 0, 3.08972, 0, 2.24784, 0, -2.11981, 3.96628, 1.49069, -0.528524)
+[node name="SCORE" type="Label3D" parent="."]
+transform = Transform3D(1.65978, 0, 1.65978, 0, 2.34728, 0, -1.65978, 0, 1.65978, 4.44788, 1.72739, 0)
 billboard = 1
-text = "SCORE"
+text = "SCORE:"
+
+[node name="Descartar" type="Label3D" parent="."]
+transform = Transform3D(-1.03084, 0, -1.09309, 0, 1.50249, 0, 1.09309, 0, -1.03084, 5.04339, -0.101449, 0.500693)
+billboard = 1
+text = "NO VALIDA"
 
 [node name="Privada" type="Label3D" parent="."]
 transform = Transform3D(-1.50746, 0, -0.0441886, 0, 1.50811, 0, 0.0441886, 0, -1.50746, 7.72039, 0.164885, -0.641903)
@@ -62,9 +81,6 @@ text = "PRIVADA"
 transform = Transform3D(0.0441886, 0, -1.50746, 0, 1.50811, 0, 1.50746, 0, 0.0441886, 3.67802, 0.091436, 3.40381)
 billboard = 1
 text = "PUBLICA"
-
-[node name="XRNode3D" parent="." instance=ExtResource("1_dxn0a")]
-transform = Transform3D(0.733579, -0.0968576, 0.672667, 0.150648, 0.988343, -0.0219779, -0.662697, 0.117459, 0.739619, 9.81394, 1.08175, 5.88018)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_gki4l")
@@ -341,6 +357,48 @@ transform = Transform3D(0.743682, 0, 0.668534, 0, 1, 0, -0.668534, 0, 0.743682, 
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.87005, 5.40405, 4.63439)
 shape = SubResource("BoxShape3D_b6npi")
 
+[node name="StaticBody3D9" type="StaticBody3D" parent="Collsions"]
+transform = Transform3D(0.743682, 0, 0.668534, 0, 1, 0, -0.668534, 0, 0.743682, -0.542601, -1.07664, 10.8611)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Collsions/StaticBody3D9"]
+transform = Transform3D(0.731314, 0.123685, -0.670731, -0.168655, 0.985673, -0.00212745, 0.660859, 0.114678, 0.741695, 9.70661, 6.87573, -4.10724)
+shape = SubResource("BoxShape3D_b6npi")
+
+[node name="StaticBody3D10" type="StaticBody3D" parent="Collsions"]
+transform = Transform3D(0.743682, 0, 0.668534, 0, 1, 0, -0.668534, 0, 0.743682, -0.542601, -1.07664, 10.8611)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Collsions/StaticBody3D10"]
+transform = Transform3D(0.731314, 0.123685, -0.670731, -0.168655, 0.985673, -0.00212745, 0.660859, 0.114678, 0.741695, 15.1604, 6.87573, 0.795487)
+shape = SubResource("BoxShape3D_b6npi")
+
+[node name="StaticBody3D11" type="StaticBody3D" parent="Collsions"]
+transform = Transform3D(0.743682, 0, 0.668534, 0, 1, 0, -0.668534, 0, 0.743682, -0.542601, -1.07664, 10.8611)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Collsions/StaticBody3D11"]
+transform = Transform3D(0.669581, 0.0357225, 0.741878, -0.0505523, 0.998719, -0.00246376, -0.741015, -0.035854, 0.670528, 8.5638, 6.87573, 0.467052)
+shape = SubResource("BoxShape3D_b6npi")
+
+[node name="StaticBody3D12" type="StaticBody3D" parent="Collsions"]
+transform = Transform3D(0.743682, 0, 0.668534, 0, 1, 0, -0.668534, 0, 0.743682, -3.46204, -1.07664, 10.8611)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Collsions/StaticBody3D12"]
+transform = Transform3D(0.318186, 0.018444, 0.947846, -0.0505523, 0.998719, -0.00246376, -0.946678, -0.0471319, 0.318711, 13.8656, 6.87573, -2.74191)
+shape = SubResource("BoxShape3D_b6npi")
+
+[node name="StaticBody3D13" type="StaticBody3D" parent="Collsions"]
+transform = Transform3D(0.743682, 0, 0.668534, 0, 1, 0, -0.668534, 0, 0.743682, -3.46204, -1.07664, 10.8611)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Collsions/StaticBody3D13"]
+transform = Transform3D(-0.346574, -0.0152289, 0.937896, -0.0505523, 0.998719, -0.00246376, -0.936658, -0.0482668, -0.3469, 13.448, 6.87573, -3.1173)
+shape = SubResource("BoxShape3D_b6npi")
+
+[node name="StaticBody3D14" type="StaticBody3D" parent="Collsions"]
+transform = Transform3D(-0.210277, -0.966506, 0.147137, 0.379472, 0.0580126, 0.923383, -0.900991, 0.25, 0.354564, -3.46204, 17.5984, 10.8611)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Collsions/StaticBody3D14"]
+transform = Transform3D(-1.19519, -0.0525175, 3.23441, -0.174334, 3.44417, -0.00849622, -3.23014, -0.166452, -1.19631, 7.79032, -1.57556, -11.5351)
+shape = SubResource("BoxShape3D_b6npi")
+
 [node name="Pipes" type="Node3D" parent="."]
 transform = Transform3D(1.31285, 0, 0, 0, 1.31285, 0, 0, 0, 1.31285, -1.49337, 0.303786, 0)
 
@@ -407,13 +465,43 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.32457, -0.97132, 4.85029)
 [node name="hangar_roundA2" parent="Pipes" instance=ExtResource("14_3dtij")]
 transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 9.16244, -0.97132, -3.02883)
 
+[node name="corridor_open" parent="Pipes" instance=ExtResource("20_d1nqm")]
+transform = Transform3D(0.538604, 0, -0.538604, 0, 0.761702, 0, 0.538604, 0, 0.538604, 4.94221, -1.44791, 0.382233)
+
+[node name="corridor_wall" parent="Pipes" instance=ExtResource("21_kvr00")]
+transform = Transform3D(0.475254, 0, 0.475254, 0, 0.672111, 0, -0.475254, 0, 0.475254, 4.50709, -1.34878, 0.818778)
+
+[node name="corridor_wall2" parent="Pipes" instance=ExtResource("21_kvr00")]
+transform = Transform3D(0.475254, 0, 0.475254, 0, 0.672111, 0, -0.475254, 0, 0.475254, 4.96153, -1.34878, 0.399389)
+
+[node name="monorail_trackStraight" parent="Pipes" instance=ExtResource("18_a0s6w")]
+transform = Transform3D(0.620059, 0, -1.09175, 0, 0.761702, 0, 0.357991, 0, 1.89097, 4.29306, -0.97125, 1.45813)
+
+[node name="monorail_trackStraight2" parent="Pipes" instance=ExtResource("18_a0s6w")]
+transform = Transform3D(0.273371, 0, -2.01808, 0, 0.761702, 0, 0.661739, 0, 0.833689, 6.04936, -0.97125, -0.072007)
+
+[node name="platform_large" parent="Pipes" instance=ExtResource("19_k4xcs")]
+transform = Transform3D(3.00997, 0, 0, 0, 1.55307, 0, 0, 0, 2.74602, 6.14213, -1.0409, 1.7387)
+
+[node name="rock_crystalsLargeB" parent="Pipes" instance=ExtResource("20_g0bmr")]
+transform = Transform3D(4.26736, 0, 0, 0, 4.26736, 0, 0, 0, 4.26736, 13.2473, -0.97125, 1.90076)
+
+[node name="rock_crystalsLargeB2" parent="Pipes" instance=ExtResource("20_g0bmr")]
+transform = Transform3D(1.94135, 0, 0, 0, 1.94135, 0, 0, 0, 1.94135, 9.57932, -0.97125, 6.46732)
+
+[node name="rock_largeA" parent="Pipes" instance=ExtResource("21_pe73p")]
+transform = Transform3D(3.86273, 0, 0, 0, 3.86273, 0, 0, 0, 3.86273, 6.32718, -0.97125, 8.36289)
+
+[node name="rock_largeA2" parent="Pipes" instance=ExtResource("21_pe73p")]
+transform = Transform3D(7.51066, 0, 0, 0, 7.51066, 0, 0, 0, 7.51066, 14.4376, -0.97125, 8.36289)
+
 [node name="barrel" parent="." instance=ExtResource("12_d8fc1")]
-transform = Transform3D(5.84695, 0, -1.66664, 0, 2.18169, 0, 1.56669, 0, 6.21999, 7.15015, -0.998264, 2.62107)
+transform = Transform3D(4.09286, 0, -1.16665, 0, 2.59621, 0, 1.09668, 0, 4.35399, 7.15015, -0.998264, 2.62107)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="barrel"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="barrel/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.114311, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00239662, 0.114311, 0.00914609)
 shape = SubResource("CylinderShape3D_7rxju")
 
 [node name="chimney_detailed" parent="." instance=ExtResource("16_4u2h5")]
@@ -437,8 +525,29 @@ shape = SubResource("BoxShape3D_mws6h")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.73228, 0, -1.98236)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AreasToDrop/Privada"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.02792, -0.770248, 2.11848)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.00943, -0.770248, 2.05338)
 shape = SubResource("BoxShape3D_mws6h")
+
+[node name="Descartar" type="Area3D" parent="AreasToDrop" groups=["INVALIDA"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.73228, 0, -1.98236)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AreasToDrop/Descartar"]
+transform = Transform3D(0.733872, 0, 0.679288, 0, 1, 0, -0.679288, 0, 0.733872, -0.69847, -0.770248, 2.49035)
+shape = SubResource("BoxShape3D_mws6h")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.588524, 0, 0.588524, 0, 0.919162, 0, -0.588524, 0, 0.588524, 5.03869, -1.27291, 0.523571)
+material_override = SubResource("StandardMaterial3D_50duv")
+mesh = SubResource("BoxMesh_lknxl")
 
 [node name="Spawner" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.1295, 0.641764, 2.60068)
+
+[node name="Correct" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("26_r12lq")
+
+[node name="Incorrect" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("27_tp6ph")
+
+[node name="XRNode3D" parent="." instance=ExtResource("27_7ytna")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.41316, 0.11043, 4.04212)
