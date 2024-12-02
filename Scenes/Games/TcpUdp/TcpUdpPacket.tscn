@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bsu0a4h1l8ga1"]
+[gd_scene load_steps=6 format=3 uid="uid://bsu0a4h1l8ga1"]
 
 [ext_resource type="PackedScene" uid="uid://c8l60rnugru40" path="res://addons/godot-xr-tools/objects/pickable.tscn" id="1_53ppb"]
 [ext_resource type="Script" path="res://Scenes/Games/TcpUdp/tcp_udp_packet.gd" id="2_usw55"]
@@ -8,6 +8,9 @@ size = Vector3(0.5, 0.5, 0.5)
 
 [sub_resource type="BoxMesh" id="BoxMesh_0hlie"]
 size = Vector3(0.5, 0.5, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tc0tk"]
+size = Vector3(0.568787, 0.539063, 0.562378)
 
 [node name="PickableObject" instance=ExtResource("1_53ppb")]
 
@@ -22,4 +25,13 @@ mesh = SubResource("BoxMesh_0hlie")
 
 [node name="Clue" type="Label3D" parent="." index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.466244, 0)
+billboard = 1
 text = "PISTA"
+
+[node name="Area3D" type="Area3D" parent="." index="4"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00326538, -0.00878906, 0.0276489)
+shape = SubResource("BoxShape3D_tc0tk")
+
+[connection signal="area_entered" from="Area3D" to="TcpUdpPacket" method="_on_area_3d_area_entered"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://7ltqogxgms3e"]
+[gd_scene load_steps=13 format=3 uid="uid://7ltqogxgms3e"]
 
 [ext_resource type="PackedScene" uid="uid://bmea15g3rg5tw" path="res://KenneyAssets/kenney_survival-kit/Models/FBX format/rock-a.fbx" id="2_spfsp"]
 [ext_resource type="PackedScene" uid="uid://u40ukx6o8rmd" path="res://KenneyAssets/kenney_survival-kit/Models/FBX format/rock-b.fbx" id="3_0onvh"]
@@ -6,8 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://cd82qi2ugqxc2" path="res://KenneyAssets/kenney_survival-kit/Models/FBX format/tree-log.fbx" id="5_rxi36"]
 [ext_resource type="PackedScene" uid="uid://j04pp1qp8pak" path="res://KenneyAssets/kenney_survival-kit/Models/FBX format/tree-tall.fbx" id="6_mkqie"]
 [ext_resource type="PackedScene" uid="uid://duddhtc7qqyr8" path="res://KenneyAssets/kenney_survival-kit/Models/FBX format/tree.fbx" id="7_njyf0"]
-[ext_resource type="PackedScene" uid="uid://vgvmpi34n4sm" path="res://Scenes/Objects/pickable_object.tscn" id="8_mh55r"]
-[ext_resource type="PackedScene" uid="uid://b8qbkcn7r0634" path="res://Scenes/Objects/Basket.tscn" id="9_8qnlv"]
 [ext_resource type="PackedScene" uid="uid://da8mhmsg4bo36" path="res://Scenes/Games/Pipes/PipePacket.tscn" id="10_xhxra"]
 
 [sub_resource type="Environment" id="Environment_gki4l"]
@@ -250,12 +248,6 @@ mesh = SubResource("BoxMesh_88da7")
 [node name="Label3D" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.29653, 1.10326, 1.19596)
 text = "Welcome To Puig_VR"
-
-[node name="PickableObject" parent="." instance=ExtResource("8_mh55r")]
-transform = Transform3D(0.252986, 0, 0, 0, 0.252986, 0, 0, 0, 0.252986, 10.5871, 1.38332, 3.63548)
-
-[node name="Node3D" parent="." instance=ExtResource("9_8qnlv")]
-transform = Transform3D(1.34872, 0, 0, 0, 1.34872, 0, 0, 0, 1.34872, 11.4989, -1.38295, 1.24353)
 
 [node name="Collsions" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.3011, 0)

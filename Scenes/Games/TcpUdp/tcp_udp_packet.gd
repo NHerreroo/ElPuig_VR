@@ -69,8 +69,14 @@ var udp_clues = [
 	"Ideal para tráfico masivo en multicast."
 ]
 
+var speed = 0.01
+var type
+
+var correct = null
+var incorrect = null
+
 func chose_tcp_or_udp():
-	var type = randi_range(0,1) #0 tcp / 1 udp
+	type = randi_range(0,1) #0 tcp / 1 udp
 	return type
 	
 
@@ -78,13 +84,42 @@ func get_random_clue(type: int):
 	var clue
 	var i
 	if type == 0: #tcp
-		i = randi_range(0,tcp_clues.size())
-		print(tcp_clues[i])
+		i = randi_range(0,tcp_clues.size()-1)
+		return tcp_clues[i]
 	elif type == 1:
-		i = randi_range(0,udp_clues.size())
-		print(udp_clues[i])
+		i = randi_range(0,udp_clues.size()-1)
+		return udp_clues[i]
 
 	
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	get_random_clue(chose_tcp_or_udp())
+	correct = get_tree().get_root().find_child("Correct", true, false)
+	incorrect = get_tree().get_root().find_child("Incorrect", true, false)
+
+	var packet = get_random_clue(chose_tcp_or_udp())
+	print(type)
+	print(packet)
+	$"../Clue".text = packet
+
+func _process(delta: float) -> void:
+	if $"..".position.x >= 1.7:
+		$"..".position.y = 5
+		$"..".position.x -= speed
+
+
+func _on_area_3d_area_entered(area: Area3D) -> void:
+	if area.is_in_group("TCP"):
+		if type == 0: #tcp
+			Global.score += randi_range(20,40)
+			correct.play()
+		else:
+			incorrect.play()
+	get_parent().queue_free()
+	if area.is_in_group("UDP"):
+		if type == 1: #udp
+			Global.score += randi_range(20,40)
+			correct.play()
+		else:
+			incorrect.play()
+		get_parent().queue_free()
+	

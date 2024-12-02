@@ -1,5 +1,6 @@
-[gd_scene load_steps=19 format=3 uid="uid://d0hr1sjtnh2l8"]
+[gd_scene load_steps=25 format=3 uid="uid://d0hr1sjtnh2l8"]
 
+[ext_resource type="Script" path="res://Scenes/Games/TcpUdp/tcp_upd_game.gd" id="1_codoh"]
 [ext_resource type="PackedScene" uid="uid://bmea15g3rg5tw" path="res://KenneyAssets/kenney_survival-kit/Models/FBX format/rock-a.fbx" id="1_nbhhd"]
 [ext_resource type="PackedScene" uid="uid://u40ukx6o8rmd" path="res://KenneyAssets/kenney_survival-kit/Models/FBX format/rock-b.fbx" id="2_ms18n"]
 [ext_resource type="PackedScene" uid="uid://bonsfxah44o8c" path="res://KenneyAssets/kenney_survival-kit/Models/FBX format/rock-c.fbx" id="3_koykt"]
@@ -9,7 +10,9 @@
 [ext_resource type="PackedScene" uid="uid://uas1kcpxhlpx" path="res://KenneyAssets/kenney_space-kit/Models/DAE format/monorail_trackStraight.dae" id="7_3ahan"]
 [ext_resource type="PackedScene" uid="uid://b2280cmvlg3yb" path="res://KenneyAssets/kenney_space-kit/Models/DAE format/monorail_trackSupport.dae" id="8_1d3hs"]
 [ext_resource type="PackedScene" uid="uid://c1phxdr3u38qn" path="res://KenneyAssets/kenney_space-kit/Models/DAE format/corridor_open.dae" id="9_hxmct"]
-[ext_resource type="PackedScene" uid="uid://dob0785i5s1r6" path="res://Scenes/Player.tscn" id="10_j54pt"]
+[ext_resource type="PackedScene" uid="uid://dt7b6tqlvsjop" path="res://Scenes/PlayerNoMovement.tscn" id="12_rc43u"]
+[ext_resource type="AudioStream" uid="uid://dte77gyvhtkhg" path="res://Sounds/Correct.mp3" id="13_3v2wc"]
+[ext_resource type="AudioStream" uid="uid://ceveawdq1py14" path="res://Sounds/Incorrect.mp3" id="14_diimm"]
 
 [sub_resource type="Environment" id="Environment_gki4l"]
 background_mode = 1
@@ -26,6 +29,12 @@ albedo_color = Color(0.428456, 0.643813, 0.441432, 1)
 [sub_resource type="BoxMesh" id="BoxMesh_88da7"]
 size = Vector3(100, 1, 100)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_mqahu"]
+size = Vector3(0.191833, 0.61731, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7tia0"]
+size = Vector3(1.00757, 1, 0.262207)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_b6npi"]
 size = Vector3(1, 11.8081, 18.5604)
 
@@ -34,10 +43,14 @@ albedo_color = Color(0, 0, 0, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_6qtqh"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_hnkqu"]
+size = Vector3(0.898865, 1.52618, 1)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_8dklw"]
 
 [node name="Main" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+script = ExtResource("1_codoh")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_gki4l")
@@ -267,6 +280,12 @@ transform = Transform3D(0.261061, 0, 0, 0, 0.261061, 0, 0, 0, 0.261061, -0.08321
 [node name="monorail_trackStraight" parent="Vegetation" instance=ExtResource("7_3ahan")]
 transform = Transform3D(-4.23058e-08, 0, 2.52438, 0, 0.261061, 0, -0.967844, 0, -1.10344e-07, 1.75656, 1.32463, 0.813702)
 
+[node name="StaticBody3D" type="StaticBody3D" parent="Vegetation/monorail_trackStraight"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Vegetation/monorail_trackStraight/StaticBody3D"]
+transform = Transform3D(0.999992, 0, 0, 0, 0.999985, 0, -1.42109e-13, 0, 1, -0.00302207, -0.191343, 0)
+shape = SubResource("BoxShape3D_mqahu")
+
 [node name="monorail_trackSupport" parent="Vegetation" instance=ExtResource("8_1d3hs")]
 transform = Transform3D(0.261061, 0, 0, 0, 3.09731, -0.0675676, 0, 0.829921, 0.252166, 0.944665, -0.227516, 0.391189)
 
@@ -281,6 +300,12 @@ transform = Transform3D(-0.261061, 3.11209e-08, 2.33407e-08, -1.87878e-09, 3.097
 
 [node name="Collsions" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.3011, 0)
+
+[node name="StaticBody3D9" type="StaticBody3D" parent="Collsions"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Collsions/StaticBody3D9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.295532, 4.96988, 2.77706)
+shape = SubResource("BoxShape3D_7tia0")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Collsions"]
 
@@ -337,22 +362,35 @@ transform = Transform3D(0.743682, 0, 0.668534, 0, 1, 0, -0.668534, 0, 0.743682, 
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.87005, 5.40405, 4.63439)
 shape = SubResource("BoxShape3D_b6npi")
 
-[node name="corridor_open" parent="." instance=ExtResource("9_hxmct")]
-transform = Transform3D(-6.6005e-08, 0, 2.51527, 0, 1.51002, 0, -1.51002, 0, -1.09946e-07, 0.0919195, 2.47733, 1.66718)
+[node name="TCP" parent="." instance=ExtResource("9_hxmct")]
+transform = Transform3D(-6.6005e-08, 0, 2.51527, 0, 1.51002, 0, -1.51002, 0, -1.09946e-07, 0.0919195, 2.47733, 1.87376)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="corridor_open"]
-transform = Transform3D(0.862311, 0, 0, 0, 0.862311, 0, 5.32907e-15, 0, 0.862311, 0, 0.398462, 0)
+[node name="MeshInstance3D" type="MeshInstance3D" parent="TCP"]
+transform = Transform3D(0.862311, 0, 0, 0, 0.862311, 0, 5.32907e-15, 0, 0.862311, 0.00380349, 0.398462, 0.000605222)
 material_override = SubResource("StandardMaterial3D_lb28h")
 mesh = SubResource("BoxMesh_6qtqh")
 
-[node name="corridor_open2" parent="." instance=ExtResource("9_hxmct")]
-transform = Transform3D(-6.6005e-08, 0, 2.51527, 0, 1.51002, 0, -1.51002, 0, -1.09946e-07, 0.0919195, 2.47733, 4.47024)
+[node name="Area3D" type="Area3D" parent="TCP" groups=["TCP"]]
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="corridor_open2"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TCP/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0196992, 0.263092, 0)
+shape = SubResource("BoxShape3D_hnkqu")
+
+[node name="UDP" parent="." instance=ExtResource("9_hxmct")]
+transform = Transform3D(-6.6005e-08, 0, 2.51527, 0, 1.51002, 0, -1.51002, 0, -1.09946e-07, 0.0919195, 2.47733, 4.26983)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="UDP"]
 transform = Transform3D(0.862311, 0, 0, 0, 0.862311, 0, 1.24345e-14, 0, 0.862311, 0.0196886, 0.398462, 0)
 material_override = SubResource("StandardMaterial3D_lb28h")
 mesh = SubResource("BoxMesh_6qtqh")
-skeleton = NodePath("../../corridor_open")
+skeleton = NodePath("../../TCP")
+
+[node name="Area3D2" type="Area3D" parent="UDP" groups=["UDP"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.58678, 0, 4.09782e-08)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="UDP/Area3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.61838, 0.263092, -4.09782e-08)
+shape = SubResource("BoxShape3D_hnkqu")
 
 [node name="platform_high" parent="." instance=ExtResource("6_mkicr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.318762, 3.09983, 3.11488)
@@ -363,5 +401,29 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.318762, 3.09983, 3.11488)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.160738, 0)
 shape = SubResource("BoxShape3D_8dklw")
 
-[node name="XRNode3D" parent="." instance=ExtResource("10_j54pt")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.229211, 7.12145, 2.99751)
+[node name="Spawner" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.2562, 5.87879, 3.18726)
+
+[node name="TCPLABEL" type="Label3D" parent="."]
+transform = Transform3D(1.81421, 0, 0, 0, 1.81421, 0, 0, 0, 1.81421, 2.08793, 4.55698, 1.15704)
+billboard = 1
+text = "TCP"
+
+[node name="UDPLABEL" type="Label3D" parent="."]
+transform = Transform3D(1.81421, 0, 0, 0, 1.81421, 0, 0, 0, 1.81421, 2.57852, 4.55698, 5.2673)
+billboard = 1
+text = "UDP
+"
+
+[node name="SCORE" type="Label3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.57964, 6.0951, 3.17623)
+text = "SCORE"
+
+[node name="XRNode3D" parent="." instance=ExtResource("12_rc43u")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.136433, 5.08175, 3.17302)
+
+[node name="Correct" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_3v2wc")
+
+[node name="Incorrect" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_diimm")

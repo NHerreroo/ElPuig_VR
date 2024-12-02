@@ -1,0 +1,56 @@
+[gd_scene load_steps=9 format=3 uid="uid://dt7b6tqlvsjop"]
+
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_fmq4v"]
+[ext_resource type="PackedScene" uid="uid://bpdj5njb8nhot" path="res://addons/godot-xr-tools/hands/scenes/highpoly/left_fullglove_hand.tscn" id="2_3inmo"]
+[ext_resource type="PackedScene" uid="uid://b4ysuy43poobf" path="res://addons/godot-xr-tools/functions/function_pickup.tscn" id="4_r30qu"]
+[ext_resource type="PackedScene" uid="uid://d1tl07geqm5xq" path="res://addons/godot-xr-tools/hands/scenes/highpoly/right_fullglove_hand.tscn" id="5_pojyy"]
+[ext_resource type="PackedScene" uid="uid://b6bk2pj8vbj28" path="res://addons/godot-xr-tools/functions/movement_turn.tscn" id="6_nxess"]
+[ext_resource type="PackedScene" uid="uid://diyu06cw06syv" path="res://addons/godot-xr-tools/player/player_body.tscn" id="7_slfl1"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_mv60h"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_0vlmr"]
+
+[node name="XRNode3D" type="XROrigin3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.08175, 0)
+script = ExtResource("1_fmq4v")
+
+[node name="XRCamera3D" type="XRCamera3D" parent="."]
+fov = 103.9
+
+[node name="XRControllerLeft" type="XRController3D" parent="."]
+tracker = &"left_hand"
+
+[node name="LeftHand" parent="XRControllerLeft" instance=ExtResource("2_3inmo")]
+
+[node name="FunctionPickup" parent="XRControllerLeft" instance=ExtResource("4_r30qu")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="XRControllerLeft"]
+transform = Transform3D(0.00438448, 0, 0, 0, -3.33587e-08, 0.00438448, 0, -0.763158, -1.91652e-10, 0, 0, -0.8161)
+mesh = SubResource("CylinderMesh_mv60h")
+
+[node name="XRControllerRight" type="XRController3D" parent="."]
+tracker = &"right_hand"
+
+[node name="RightHand" parent="XRControllerRight" instance=ExtResource("5_pojyy")]
+
+[node name="MovementTurn" parent="XRControllerRight" instance=ExtResource("6_nxess")]
+turn_mode = 2
+
+[node name="FunctionPickup" parent="XRControllerRight" instance=ExtResource("4_r30qu")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="XRControllerRight"]
+transform = Transform3D(0.004, 0, 0, 0, -3.32207e-08, 0.004, 0, -0.76, -1.74846e-10, 0, 0, -0.787843)
+mesh = SubResource("CylinderMesh_0vlmr")
+
+[node name="PlayerBody" parent="." instance=ExtResource("7_slfl1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.396884, 0)
+collision_layer = 524290
+axis_lock_linear_y = true
+axis_lock_angular_z = true
+platform_on_leave = 2
+platform_floor_layers = 4294967042
+platform_wall_layers = 2
+player_height_min = 0.0
+player_height_max = 2.0
+push_strength_factor = 0.0

@@ -1,22 +1,21 @@
 extends Node3D
 
-var packet = preload("res://Scenes/Games/Pipes/PipePacket.tscn")
+var packet = preload("res://Scenes/Games/TcpUdp/TcpUdpPacket.tscn")
+
 
 func _ready() -> void:
 	Global.score = 0
-	Global.current_packet_type
-	Global.is_packet_instanciated = false
-	Global.is_correct
-
+	Global.is_correct = null
+	
+	while true:
+		spawn_packet()
+		await get_tree().create_timer(6).timeout
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if Global.is_correct == true:
-		$Correct.play()
-	elif Global.is_correct == false:
-		$Incorrect.play()
+	$XRNode3D.position = Vector3(-0.136, 5.082, 3.173)
 	$SCORE.text = str("PUNTOS: " + str(Global.score))
-	if Global.is_packet_instanciated == false:
-		spawn_packet()
+
 
 
 func spawn_packet():
