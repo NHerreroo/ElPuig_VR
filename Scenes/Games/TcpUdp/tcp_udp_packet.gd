@@ -59,7 +59,6 @@ var udp_clues = [
 	"Streaming en vivo",
 	"Llamadas VoIP",
 	"Gaming online",
-	"DNS",
 	"Protocolo SNMP",
 
 	# Casos avanzados
