@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://dob0785i5s1r6"]
+[gd_scene load_steps=11 format=3 uid="uid://dob0785i5s1r6"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_keplv"]
 [ext_resource type="PackedScene" uid="uid://bl2nuu3qhlb5k" path="res://addons/godot-xr-tools/functions/movement_direct.tscn" id="3_dyl4i"]
 [ext_resource type="PackedScene" uid="uid://bpdj5njb8nhot" path="res://addons/godot-xr-tools/hands/scenes/highpoly/left_fullglove_hand.tscn" id="3_q8fc3"]
 [ext_resource type="PackedScene" uid="uid://b6bk2pj8vbj28" path="res://addons/godot-xr-tools/functions/movement_turn.tscn" id="3_uerhj"]
 [ext_resource type="PackedScene" uid="uid://b4ysuy43poobf" path="res://addons/godot-xr-tools/functions/function_pickup.tscn" id="4_80cua"]
+[ext_resource type="PackedScene" uid="uid://cqhw276realc" path="res://addons/godot-xr-tools/functions/function_pointer.tscn" id="5_bdtxq"]
 [ext_resource type="PackedScene" uid="uid://diyu06cw06syv" path="res://addons/godot-xr-tools/player/player_body.tscn" id="5_qqokb"]
 [ext_resource type="PackedScene" uid="uid://d1tl07geqm5xq" path="res://addons/godot-xr-tools/hands/scenes/highpoly/right_fullglove_hand.tscn" id="6_oigpv"]
 
@@ -33,6 +34,10 @@ strafe = true
 transform = Transform3D(0.00438448, 0, 0, 0, -3.33587e-08, 0.00438448, 0, -0.763158, -1.91652e-10, 0, 0, -0.8161)
 mesh = SubResource("CylinderMesh_mv60h")
 
+[node name="FunctionPointer" parent="XRControllerLeft" instance=ExtResource("5_bdtxq")]
+show_laser = 2
+laser_length = 1
+
 [node name="XRControllerRight" type="XRController3D" parent="."]
 tracker = &"right_hand"
 
@@ -46,6 +51,10 @@ turn_mode = 2
 [node name="MeshInstance3D" type="MeshInstance3D" parent="XRControllerRight"]
 transform = Transform3D(0.004, 0, 0, 0, -3.32207e-08, 0.004, 0, -0.76, -1.74846e-10, 0, 0, -0.787843)
 mesh = SubResource("CylinderMesh_0vlmr")
+
+[node name="FunctionPointer2" parent="XRControllerRight" instance=ExtResource("5_bdtxq")]
+show_laser = 2
+laser_length = 1
 
 [node name="PlayerBody" parent="." instance=ExtResource("5_qqokb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.396884, 0)

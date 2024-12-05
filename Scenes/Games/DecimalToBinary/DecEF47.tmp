@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dil57f18dupp2"]
+[gd_scene load_steps=22 format=3 uid="uid://dil57f18dupp2"]
 
 [ext_resource type="Script" path="res://Scenes/Games/DecimalToBinary/decimal_to_binary_game.gd" id="1_5ktfr"]
 [ext_resource type="PackedScene" uid="uid://bmea15g3rg5tw" path="res://KenneyAssets/kenney_survival-kit/Models/FBX format/rock-a.fbx" id="1_edmb5"]
@@ -10,8 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://bgykypsjvivb2" path="res://KenneyAssets/kenney_space-kit/Models/DAE format/barrel.dae" id="7_74446"]
 [ext_resource type="PackedScene" uid="uid://dob0785i5s1r6" path="res://Scenes/Player.tscn" id="8_14d71"]
 [ext_resource type="PackedScene" uid="uid://d0q5umsv63msb" path="res://Scenes/Games/DecimalToBinary/pickable_Packet_Binary.tscn" id="8_fdr2o"]
-[ext_resource type="PackedScene" uid="uid://clujaf3u776a3" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.tscn" id="10_fjlo2"]
-[ext_resource type="PackedScene" uid="uid://b1wrsdn3usxjc" path="res://Scenes/Comprobar_boton.tscn" id="11_kh3wf"]
 [ext_resource type="AudioStream" uid="uid://dte77gyvhtkhg" path="res://Sounds/Correct.mp3" id="11_tqc3u"]
 [ext_resource type="AudioStream" uid="uid://ceveawdq1py14" path="res://Sounds/Incorrect.mp3" id="12_7we2h"]
 
@@ -530,25 +528,17 @@ billboard = 1
 text = "0"
 
 [node name="DECIMAL" type="Label3D" parent="."]
-transform = Transform3D(3.16667, 0, 0, 0, 3.16667, 0, 0, 0, 3.16667, -1.64513, 1.64014, 8.30132)
+transform = Transform3D(3.16667, 0, 0, 0, 3.16667, 0, 0, 0, 3.16667, -1.64513, 1.64014, 7.63669)
 billboard = 1
 text = "DECIMAL: 135"
 
 [node name="DECIMAL2" type="Label3D" parent="."]
-transform = Transform3D(3.16667, 0, 0, 0, 3.16667, 0, 0, 0, 3.16667, -1.64513, 1.64014, 1.12453)
+transform = Transform3D(3.16667, 0, 0, 0, 3.16667, 0, 0, 0, 3.16667, -1.64513, 1.64014, 2.24696)
 billboard = 1
 text = "TOTAL:  0"
 
-[node name="Viewport2Din3D" parent="." instance=ExtResource("10_fjlo2")]
-transform = Transform3D(2.6003e-08, 0, 0.872515, 0, 0.872515, 0, -0.872515, 0, 2.6003e-08, -2.07437, 1.57073, 4.39573)
-scene = ExtResource("11_kh3wf")
-viewport_size = Vector2(1150, 600)
-transparent = 2
-alpha_scissor_threshold = 0.44
-scene_properties_keys = PackedStringArray()
-
 [node name="PickableObject" parent="." instance=ExtResource("8_fdr2o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.4736, -0.297065, 3.98363)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.4736, 9.79666, 4.19867)
 
 [node name="barrel" parent="." instance=ExtResource("7_74446")]
 transform = Transform3D(4.09286, 0, -1.16665, 0, 2.59621, 0, 1.09668, 0, 4.35399, 3.47642, -1.08237, 4.02997)
@@ -564,9 +554,6 @@ stream = ExtResource("11_tqc3u")
 
 [node name="Incorrect" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("12_7we2h")
-
-[node name="Spawner" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.50275, 0.411688, 4.04452)
 
 [connection signal="area_entered" from="Barrels/128/Area128" to="." method="_on_area_128_area_entered"]
 [connection signal="area_entered" from="Barrels/64/Area64" to="." method="_on_area_64_area_entered"]

@@ -1,0 +1,41 @@
+[gd_scene load_steps=8 format=3 uid="uid://d0q5umsv63msb"]
+
+[ext_resource type="PackedScene" uid="uid://c8l60rnugru40" path="res://addons/godot-xr-tools/objects/pickable.tscn" id="1_bmoip"]
+[ext_resource type="Script" path="res://Scenes/Games/DecimalToBinary/packet_binary_logic.gd" id="2_e7s35"]
+[ext_resource type="PackedScene" uid="uid://ctw7nbntd5pcj" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_right.tscn" id="2_rebma"]
+[ext_resource type="PackedScene" uid="uid://c25yxb0vt53vc" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_left.tscn" id="3_06cyq"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_borv1"]
+size = Vector3(0.2, 0.2, 0.2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_7b2lm"]
+size = Vector3(0.2, 0.2, 0.2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qsofm"]
+
+[node name="PickableObject" instance=ExtResource("1_bmoip")]
+
+[node name="Comportamiento" type="Node3D" parent="." index="0"]
+script = ExtResource("2_e7s35")
+
+[node name="CollisionShape3D" parent="." index="1"]
+shape = SubResource("BoxShape3D_borv1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="2"]
+mesh = SubResource("BoxMesh_7b2lm")
+
+[node name="Area3D" type="Area3D" parent="." index="3" groups=["paket"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0"]
+transform = Transform3D(0.207598, 0, 0, 0, 0.207598, 0, 0, 0, 0.207598, 0, 0, 0)
+shape = SubResource("BoxShape3D_qsofm")
+
+[node name="GrabPointHandRight" parent="." index="4" instance=ExtResource("2_rebma")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.107281, 0, -0.0641194)
+editor_preview_mode = 1
+
+[node name="GrabPointHandLeft" parent="." index="5" instance=ExtResource("3_06cyq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.107225, 0, -0.0343819)
+editor_preview_mode = 1
+
+[connection signal="area_entered" from="Area3D" to="Comportamiento" method="_on_area_3d_area_entered"]
