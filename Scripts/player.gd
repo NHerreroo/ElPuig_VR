@@ -5,8 +5,9 @@ var speed: float = 3.0  # Velocidad de movimiento
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	await  get_tree().create_timer(1).timeout
 	if Global.playercollider == false:
-		$Area3D/CollisionShape3D.disabled
+		$Area3D/CollisionShape3D.disabled = true
 	else:
 		$Area3D/CollisionShape3D.disabled = false
 		

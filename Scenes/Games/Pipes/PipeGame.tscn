@@ -57,12 +57,17 @@ albedo_color = Color(0, 0, 0, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_lknxl"]
 
-[node name="Main" type="Node3D"]
+[node name="Main2" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 script = ExtResource("1_1wwfm")
 
 [node name="SCORE" type="Label3D" parent="."]
 transform = Transform3D(1.65978, 0, 1.65978, 0, 2.34728, 0, -1.65978, 0, 1.65978, 4.44788, 1.72739, 0)
+billboard = 1
+text = "SCORE:"
+
+[node name="Time" type="Label3D" parent="."]
+transform = Transform3D(1.65978, 0, 1.65978, 0, 2.34728, 0, -1.65978, 0, 1.65978, 4.44788, 2.56875, 0)
 billboard = 1
 text = "SCORE:"
 

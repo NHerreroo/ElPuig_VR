@@ -5,6 +5,11 @@ var num2
 var num3
 var num4
 
+
+func _process(delta: float) -> void:
+	if Global.ended == true:
+		get_parent().queue_free()
+		
 func _ready() -> void:
 	Global.is_packet_instanciated = true
 	var type = chose_ip_type()

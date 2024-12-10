@@ -213,7 +213,7 @@ transform = Transform3D(-0.122129, 0, -0.992514, 0, 1, 0, 0.992514, 0, -0.122129
 transform = Transform3D(-0.122129, 0, -0.992514, 0, 1, 0, 0.992514, 0, -0.122129, -1.77156, 0.0789815, 3.07284)
 
 [node name="tree16" parent="Vegetation" instance=ExtResource("6_3vqvf")]
-transform = Transform3D(-0.122129, 0, -0.992514, 0, 1, 0, 0.992514, 0, -0.122129, -1.77156, 0.0789815, -1.02761)
+transform = Transform3D(-0.122129, 0, -0.992514, 0, 1, 0, 0.992514, 0, -0.122129, -1.76715, 0.0590054, -1.04722)
 
 [node name="tree17" parent="Vegetation" instance=ExtResource("6_3vqvf")]
 transform = Transform3D(-0.122129, 0, -0.992514, 0, 1, 0, 0.992514, 0, -0.122129, 5.64314, 0.0789815, -0.936089)
@@ -530,22 +530,31 @@ billboard = 1
 text = "0"
 
 [node name="DECIMAL" type="Label3D" parent="."]
-transform = Transform3D(3.16667, 0, 0, 0, 3.16667, 0, 0, 0, 3.16667, -1.64513, 1.64014, 8.30132)
+transform = Transform3D(3.16667, 0, 0, 0, 3.16667, 0, 0, 0, 3.16667, -1.64513, 2.35776, 8.30132)
 billboard = 1
 text = "DECIMAL: 135"
 
 [node name="DECIMAL2" type="Label3D" parent="."]
-transform = Transform3D(3.16667, 0, 0, 0, 3.16667, 0, 0, 0, 3.16667, -1.64513, 1.64014, 1.12453)
+transform = Transform3D(3.16667, 0, 0, 0, 3.16667, 0, 0, 0, 3.16667, -1.64513, 1.40199, 8.78893)
 billboard = 1
 text = "TOTAL:  0"
 
+[node name="TIEMPO" type="Label3D" parent="."]
+transform = Transform3D(3.16667, 0, 0, 0, 3.16667, 0, 0, 0, 3.16667, -1.64513, 2.35776, 2.3703)
+billboard = 1
+text = "TIEMPO:"
+
+[node name="score" type="Label3D" parent="."]
+transform = Transform3D(3.16667, 0, 0, 0, 3.16667, 0, 0, 0, 3.16667, -1.64513, 1.40199, 2.50177)
+billboard = 1
+text = "SCORE:"
+
 [node name="Viewport2Din3D" parent="." instance=ExtResource("10_fjlo2")]
-transform = Transform3D(2.6003e-08, 0, 0.872515, 0, 0.872515, 0, -0.872515, 0, 2.6003e-08, -2.07437, 1.57073, 4.39573)
+transform = Transform3D(2.6003e-08, 0, 0.872515, 0, 0.872515, 0, -0.872515, 0, 2.6003e-08, -2.07437, 1.36405, 5.41401)
 scene = ExtResource("11_kh3wf")
 viewport_size = Vector2(1150, 600)
 transparent = 2
 alpha_scissor_threshold = 0.44
-scene_properties_keys = PackedStringArray()
 
 [node name="PickableObject" parent="." instance=ExtResource("8_fdr2o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.4736, -0.297065, 3.98363)

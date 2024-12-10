@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://7ltqogxgms3e"]
+[gd_scene load_steps=29 format=3 uid="uid://7ltqogxgms3e"]
 
 [ext_resource type="Script" path="res://Scenes/Lobby.gd" id="1_6yfk3"]
 [ext_resource type="PackedScene" uid="uid://bmea15g3rg5tw" path="res://KenneyAssets/kenney_survival-kit/Models/FBX format/rock-a.fbx" id="2_spfsp"]
@@ -41,7 +41,7 @@ render_priority = 0
 shader = ExtResource("7_ixsga")
 shader_parameter/PORTAL_RADIUS = 6.165
 shader_parameter/PORTAL_NORMAL = Vector3(-0.925, -0.27, 0.005)
-shader_parameter/PORTAL_CENTER = Vector3(2.475, 3.495, 5.465)
+shader_parameter/PORTAL_CENTER = Vector3(2.475, 3.74, 5.465)
 shader_parameter/PORTAL_SEAM = Vector3(0, 0, 0)
 shader_parameter/INSIDE_TEXTURE = SubResource("GradientTexture2D_ku448")
 
@@ -53,6 +53,47 @@ size = Vector3(0.737122, 0.896973, 0.0476074)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rfw6b"]
 size = Vector3(0.677917, 1.49402, 0.122559)
+
+[sub_resource type="Gradient" id="Gradient_562iy"]
+colors = PackedColorArray(0, 0, 0, 1, 0.687215, 0.687215, 0.687215, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_jgsco"]
+gradient = SubResource("Gradient_562iy")
+fill = 1
+fill_from = Vector2(0.226316, 0.236842)
+fill_to = Vector2(1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d0dee"]
+render_priority = 0
+shader = ExtResource("7_ixsga")
+shader_parameter/PORTAL_RADIUS = 10.235
+shader_parameter/PORTAL_NORMAL = Vector3(0.075, 0.23, 1.12)
+shader_parameter/PORTAL_CENTER = Vector3(7.445, 1.365, -8.425)
+shader_parameter/PORTAL_SEAM = Vector3(0, 0, 0)
+shader_parameter/INSIDE_TEXTURE = SubResource("GradientTexture2D_jgsco")
+
+[sub_resource type="SphereMesh" id="SphereMesh_5nbwe"]
+material = SubResource("ShaderMaterial_d0dee")
+
+[sub_resource type="Gradient" id="Gradient_xerr7"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_pmroa"]
+gradient = SubResource("Gradient_xerr7")
+fill = 1
+fill_from = Vector2(0.194737, 0.2)
+fill_to = Vector2(0.868421, 0.878947)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sgdvi"]
+render_priority = 127
+shader = ExtResource("7_ixsga")
+shader_parameter/PORTAL_RADIUS = 16.26
+shader_parameter/PORTAL_NORMAL = Vector3(0.065, -0.165, 0.975)
+shader_parameter/PORTAL_CENTER = Vector3(6.315, 2.55, 0.305)
+shader_parameter/PORTAL_SEAM = Vector3(0, 0, 0)
+shader_parameter/INSIDE_TEXTURE = SubResource("GradientTexture2D_pmroa")
+
+[sub_resource type="SphereMesh" id="SphereMesh_kgny6"]
+material = SubResource("ShaderMaterial_sgdvi")
 
 [node name="Main" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -356,16 +397,15 @@ transform = Transform3D(1, 0, -5.66012e-08, 0, 1, 0, 5.66012e-08, 0, 1, 0.006424
 text = "PipeNet"
 
 [node name="Area3D" type="Area3D" parent="gate_complex2"]
+transform = Transform3D(1, 0, -7.10543e-15, 0, 1, 0, 7.10543e-15, 0, 1, -0.00460768, -1.49012e-07, -0.00608206)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="gate_complex2/Area3D"]
 transform = Transform3D(1, 0, -1.79767e-12, 0, 1, 0, 1.79767e-12, 0, 1, -0.00802588, 0.247009, -0.0456544)
 shape = SubResource("BoxShape3D_rfw6b")
 
-[node name="Area3D2" type="Area3D" parent="gate_complex2"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="gate_complex2/Area3D2"]
-transform = Transform3D(1, 0, -1.79767e-12, 0, 1, 0, 1.79767e-12, 0, 1, -0.00802588, 0.247009, -0.0456544)
-shape = SubResource("BoxShape3D_rfw6b")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="gate_complex2"]
+transform = Transform3D(0.857395, 0, -1.11022e-16, 0, 0.857395, 0, 2.13163e-14, 0, 0.00307033, 0, 0.571896, 0)
+mesh = SubResource("SphereMesh_5nbwe")
 
 [node name="gate_complex3" parent="." instance=ExtResource("6_p3ewb")]
 transform = Transform3D(3.15919, 0, 2.38419e-07, 0, 3.15919, 0, -2.38419e-07, 0, 3.15919, 7.48762, -1.90966, 16.0767)
@@ -381,10 +421,13 @@ shape = SubResource("BoxShape3D_rfw6b")
 transform = Transform3D(-1, 0, -3.08216e-08, 0, 1, 0, 3.08216e-08, 0, -1, 0.00642514, 1.15453, 0.00244999)
 text = "TCP/UDP"
 
+[node name="MeshInstance3D" type="MeshInstance3D" parent="gate_complex3"]
+transform = Transform3D(0.684583, 0, 3.33067e-16, 0, 0.684583, 0, 2.13163e-14, 0, -0.0108049, 0, 0.566205, 0)
+mesh = SubResource("SphereMesh_kgny6")
+
 [node name="XRNode3D" parent="." instance=ExtResource("7_6bnuu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.06734, 0.110429, 7.41548)
 
 [connection signal="area_entered" from="BinaryGame/Area3D" to="." method="_on_area_3d_area_entered"]
 [connection signal="area_entered" from="gate_complex2/Area3D" to="." method="_on_area_3d_area_entered2"]
-[connection signal="area_entered" from="gate_complex2/Area3D2" to="." method="_on_area_3d_2_area_entered"]
 [connection signal="area_entered" from="gate_complex3/Area3D2" to="." method="_on_area_3d_2_area_entered"]

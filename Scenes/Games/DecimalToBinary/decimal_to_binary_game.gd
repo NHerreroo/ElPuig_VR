@@ -3,6 +3,7 @@ extends Node3D
 var decimal_num: int
 var binary_combination: Array = []  # Mantendrá los valores 0 o 1 en orden
 var total: int = 0
+var time = 5
 
 var packet = preload("res://Scenes/Games/DecimalToBinary/pickable_Packet_Binary.tscn")
 
@@ -13,10 +14,16 @@ func spawn_packet():
 
 func _ready():
 	Global.playercollider = false
+	start_timer()
 	reset_game()
 
-func reset_game():
+
+func start_timer():
+	while time > 0:
+		await get_tree().create_timer(1).timeout
+		time -= 1
 	
+func reset_game():
 	$num.text = "0"
 	$num2.text = "0"
 	$num3.text = "0"
@@ -53,6 +60,12 @@ func binary_to_decimal(binary_string: String) -> int:
 
 
 func _process(delta: float) -> void:
+	$TIEMPO.text = "Tiempo: " + str(time) 
+	$score.text = str(Global.score)
+	if time <= 0:
+		Global.ended = true
+		await get_tree().create_timer(1).timeout
+		get_tree().change_scene_to_file("res://Scenes/main.tscn")
 	check_combination()
 	
 func check_combination() -> void:
@@ -69,6 +82,7 @@ func check_combination() -> void:
 		print("¡Correcto!")
 		$DECIMAL2.text = "¡Correcto! Total: " + str(total)
 		$Correct.play()
+		Global.score += randi_range(30,60)
 		reset_game()
 	else:
 		$Incorrect.play()
