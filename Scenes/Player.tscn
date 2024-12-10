@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dob0785i5s1r6"]
+[gd_scene load_steps=11 format=3 uid="uid://dob0785i5s1r6"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_keplv"]
 [ext_resource type="PackedScene" uid="uid://bl2nuu3qhlb5k" path="res://addons/godot-xr-tools/functions/movement_direct.tscn" id="3_dyl4i"]
@@ -12,10 +12,6 @@
 [sub_resource type="CylinderMesh" id="CylinderMesh_mv60h"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_0vlmr"]
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_lkn8s"]
-radius = 0.360276
-height = 1.38947
 
 [node name="XRNode3D" type="XROrigin3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.08175, 0)
@@ -64,8 +60,3 @@ laser_length = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.396884, 0)
 player_height_min = 0.0
 player_height_max = 2.0
-
-[node name="Area3D" type="Area3D" parent="." groups=["player"]]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-shape = SubResource("CapsuleShape3D_lkn8s")

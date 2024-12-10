@@ -4,7 +4,6 @@ var packet = preload("res://Scenes/Games/TcpUdp/TcpUdpPacket.tscn")
 
 
 func _ready() -> void:
-	Global.playercollider = false
 	Global.score = 0
 	Global.is_correct = null
 	

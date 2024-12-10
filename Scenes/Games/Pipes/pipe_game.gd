@@ -3,8 +3,6 @@ extends Node3D
 var packet = preload("res://Scenes/Games/Pipes/PipePacket.tscn")
 
 func _ready() -> void:
-	Global.playercollider = false
-	
 	Global.score = 0
 	Global.current_packet_type
 	Global.is_packet_instanciated = false
