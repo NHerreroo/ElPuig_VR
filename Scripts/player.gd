@@ -5,6 +5,12 @@ var speed: float = 3.0  # Velocidad de movimiento
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	if Global.playercollider == false:
+		$Area3D/CollisionShape3D.disabled
+	else:
+		$Area3D/CollisionShape3D.disabled = false
+		
+		
 	xr_interface = XRServer.find_interface("OpenXR")
  
 	if xr_interface and xr_interface.is_initialized():

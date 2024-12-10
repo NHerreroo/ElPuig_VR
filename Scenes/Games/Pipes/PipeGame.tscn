@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://bm3l3w375xf5o"]
+[gd_scene load_steps=36 format=3 uid="uid://bm3l3w375xf5o"]
 
 [ext_resource type="Script" path="res://Scenes/Games/Pipes/pipe_game.gd" id="1_1wwfm"]
 [ext_resource type="PackedScene" uid="uid://bmea15g3rg5tw" path="res://KenneyAssets/kenney_survival-kit/Models/FBX format/rock-a.fbx" id="2_5gcb1"]
@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://j04pp1qp8pak" path="res://KenneyAssets/kenney_survival-kit/Models/FBX format/tree-tall.fbx" id="5_5q6uq"]
 [ext_resource type="PackedScene" uid="uid://duddhtc7qqyr8" path="res://KenneyAssets/kenney_survival-kit/Models/FBX format/tree.fbx" id="6_ihdsi"]
 [ext_resource type="PackedScene" uid="uid://c3vo068mkb2o3" path="res://KenneyAssets/kenney_space-kit/Models/DAE format/pipe_end.dae" id="7_aiujs"]
-[ext_resource type="PackedScene" uid="uid://da8mhmsg4bo36" path="res://Scenes/Games/Pipes/PipePacket.tscn" id="7_gsr8w"]
 [ext_resource type="PackedScene" uid="uid://ci6q75itojtjh" path="res://KenneyAssets/kenney_space-kit/Models/DAE format/pipe_rampLarge.dae" id="8_w877o"]
 [ext_resource type="PackedScene" uid="uid://dnti10ycvwo32" path="res://KenneyAssets/kenney_space-kit/Models/DAE format/pipe_split.dae" id="9_lwt6u"]
 [ext_resource type="PackedScene" uid="uid://bg1x24p6uoqwe" path="res://KenneyAssets/kenney_space-kit/Models/DAE format/pipe_straight.dae" id="10_trswd"]
@@ -89,9 +88,6 @@ environment = SubResource("Environment_gki4l")
 transform = Transform3D(1, 0, 0, 0, 0.735435, 0.677595, 0, -0.677595, 0.735435, -22.4488, 6.50441, 6.11123)
 light_color = Color(0.63063, 0.21128, 0.184497, 1)
 shadow_enabled = true
-
-[node name="PickableObject" parent="." instance=ExtResource("7_gsr8w")]
-transform = Transform3D(0.792652, 0, 0.609675, 0, 1, 0, -0.609675, 0, 0.792652, 7.17109, 0.478646, 2.613)
 
 [node name="Floor" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.47132, 0)
