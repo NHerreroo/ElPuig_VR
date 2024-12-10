@@ -6,7 +6,7 @@ var is_packet_instanciated = false
 var is_correct
 
 
-
+var playercollider
 
 
 var comprobar

@@ -1,12 +1,14 @@
-[gd_scene load_steps=13 format=3 uid="uid://7ltqogxgms3e"]
+[gd_scene load_steps=21 format=3 uid="uid://7ltqogxgms3e"]
 
+[ext_resource type="Script" path="res://Scenes/Lobby.gd" id="1_6yfk3"]
 [ext_resource type="PackedScene" uid="uid://bmea15g3rg5tw" path="res://KenneyAssets/kenney_survival-kit/Models/FBX format/rock-a.fbx" id="2_spfsp"]
 [ext_resource type="PackedScene" uid="uid://u40ukx6o8rmd" path="res://KenneyAssets/kenney_survival-kit/Models/FBX format/rock-b.fbx" id="3_0onvh"]
 [ext_resource type="PackedScene" uid="uid://bonsfxah44o8c" path="res://KenneyAssets/kenney_survival-kit/Models/FBX format/rock-c.fbx" id="4_nit4p"]
-[ext_resource type="PackedScene" uid="uid://cd82qi2ugqxc2" path="res://KenneyAssets/kenney_survival-kit/Models/FBX format/tree-log.fbx" id="5_rxi36"]
 [ext_resource type="PackedScene" uid="uid://j04pp1qp8pak" path="res://KenneyAssets/kenney_survival-kit/Models/FBX format/tree-tall.fbx" id="6_mkqie"]
+[ext_resource type="PackedScene" uid="uid://dpvrgi2bxg2qc" path="res://KenneyAssets/kenney_space-kit/Models/DAE format/gate_complex.dae" id="6_p3ewb"]
+[ext_resource type="PackedScene" uid="uid://dob0785i5s1r6" path="res://Scenes/Player.tscn" id="7_6bnuu"]
+[ext_resource type="Shader" path="res://Scenes/Portal.gdshader" id="7_ixsga"]
 [ext_resource type="PackedScene" uid="uid://duddhtc7qqyr8" path="res://KenneyAssets/kenney_survival-kit/Models/FBX format/tree.fbx" id="7_njyf0"]
-[ext_resource type="PackedScene" uid="uid://da8mhmsg4bo36" path="res://Scenes/Games/Pipes/PipePacket.tscn" id="10_xhxra"]
 
 [sub_resource type="Environment" id="Environment_gki4l"]
 background_mode = 1
@@ -26,8 +28,35 @@ size = Vector3(100, 1, 100)
 [sub_resource type="BoxShape3D" id="BoxShape3D_b6npi"]
 size = Vector3(1, 11.8081, 18.5604)
 
+[sub_resource type="Gradient" id="Gradient_u1fvy"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ku448"]
+gradient = SubResource("Gradient_u1fvy")
+fill = 1
+fill_from = Vector2(0.136842, 0.178947)
+fill_to = Vector2(0.836842, 0.889474)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_plndo"]
+render_priority = 0
+shader = ExtResource("7_ixsga")
+shader_parameter/PORTAL_RADIUS = 6.165
+shader_parameter/PORTAL_NORMAL = Vector3(-0.925, -0.27, 0.005)
+shader_parameter/PORTAL_CENTER = Vector3(2.475, 3.495, 5.465)
+shader_parameter/PORTAL_SEAM = Vector3(0, 0, 0)
+shader_parameter/INSIDE_TEXTURE = SubResource("GradientTexture2D_ku448")
+
+[sub_resource type="SphereMesh" id="SphereMesh_7t7cg"]
+material = SubResource("ShaderMaterial_plndo")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7h6c6"]
+size = Vector3(0.737122, 0.896973, 0.0476074)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rfw6b"]
+size = Vector3(0.677917, 1.49402, 0.122559)
+
 [node name="Main" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+script = ExtResource("1_6yfk3")
 
 [node name="Vegetation" type="Node3D" parent="."]
 transform = Transform3D(3.83052, 0, 0, 0, 3.83052, 0, 0, 0, 3.83052, 0, -1.33278, 0)
@@ -103,9 +132,6 @@ transform = Transform3D(-1.97964, 0, 3.85031, 0, 4.32942, 0, -3.85031, 0, -1.979
 
 [node name="rock-c6" parent="Vegetation" instance=ExtResource("4_nit4p")]
 transform = Transform3D(-4.2037, 0, 0.328772, 0, 4.21654, 0, -0.328772, 0, -4.2037, 0.968179, 0.0215577, 8.38785)
-
-[node name="tree-log" parent="Vegetation" instance=ExtResource("5_rxi36")]
-transform = Transform3D(0.613163, 0, 0, 0, 0.613163, 0, 0, 0, 0.613163, 0.226809, 0.151083, 2.15276)
 
 [node name="tree-tall" parent="Vegetation" instance=ExtResource("6_mkqie")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.01005, 0, -2.89578)
@@ -242,12 +268,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.47132, 0)
 shape = SubResource("BoxShape3D_y5wap")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D/CollisionShape3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0692797, 9.53674e-07, 0.00132608)
 material_override = SubResource("StandardMaterial3D_t5yd5")
 mesh = SubResource("BoxMesh_88da7")
-
-[node name="Label3D" type="Label3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.29653, 1.10326, 1.19596)
-text = "Welcome To Puig_VR"
 
 [node name="Collsions" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.3011, 0)
@@ -307,5 +330,61 @@ transform = Transform3D(0.743682, 0, 0.668534, 0, 1, 0, -0.668534, 0, 0.743682, 
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.87005, 5.40405, 4.63439)
 shape = SubResource("BoxShape3D_b6npi")
 
-[node name="PickableObject2" parent="." instance=ExtResource("10_xhxra")]
-transform = Transform3D(0.438341, 0, 0, 0, 0.438341, 0, 0, 0, 0.438341, 5.21752, 0.977861, 0.186205)
+[node name="BinaryGame" parent="." instance=ExtResource("6_p3ewb")]
+transform = Transform3D(-1.38093e-07, 0, 3.15919, 0, 3.15919, 0, -3.15919, 0, -1.38093e-07, -1.49237, -1.90966, 5.49103)
+
+[node name="Label3D" type="Label3D" parent="BinaryGame"]
+transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, 0.0290657, 1.1699, 0.0489954)
+text = "Binary Builder"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BinaryGame"]
+transform = Transform3D(0.795334, -0.0331755, -5.46978e-06, 0.0313191, 0.843887, 3.3287e-06, -0.00792812, 0.00558375, -0.000535569, -8.86917e-05, 0.57005, 0.00535351)
+mesh = SubResource("SphereMesh_7t7cg")
+
+[node name="Area3D" type="Area3D" parent="BinaryGame"]
+transform = Transform3D(1, 0, 3.55271e-15, 0, 1, 0, -3.55271e-15, 0, 1, 0.0219601, 2.38419e-07, 0.00133139)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BinaryGame/Area3D"]
+transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, 0.00509644, 0.530281, 0.0155029)
+shape = SubResource("BoxShape3D_7h6c6")
+
+[node name="gate_complex2" parent="." instance=ExtResource("6_p3ewb")]
+transform = Transform3D(3.15919, 0, 2.38419e-07, 0, 3.15919, 0, -2.38419e-07, 0, 3.15919, 7.48762, -1.90966, -5.2378)
+
+[node name="Label3D2" type="Label3D" parent="gate_complex2"]
+transform = Transform3D(1, 0, -5.66012e-08, 0, 1, 0, 5.66012e-08, 0, 1, 0.00642467, 1.15453, 0.00987852)
+text = "PipeNet"
+
+[node name="Area3D" type="Area3D" parent="gate_complex2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="gate_complex2/Area3D"]
+transform = Transform3D(1, 0, -1.79767e-12, 0, 1, 0, 1.79767e-12, 0, 1, -0.00802588, 0.247009, -0.0456544)
+shape = SubResource("BoxShape3D_rfw6b")
+
+[node name="Area3D2" type="Area3D" parent="gate_complex2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="gate_complex2/Area3D2"]
+transform = Transform3D(1, 0, -1.79767e-12, 0, 1, 0, 1.79767e-12, 0, 1, -0.00802588, 0.247009, -0.0456544)
+shape = SubResource("BoxShape3D_rfw6b")
+
+[node name="gate_complex3" parent="." instance=ExtResource("6_p3ewb")]
+transform = Transform3D(3.15919, 0, 2.38419e-07, 0, 3.15919, 0, -2.38419e-07, 0, 3.15919, 7.48762, -1.90966, 16.0767)
+
+[node name="Area3D2" type="Area3D" parent="gate_complex3"]
+transform = Transform3D(1, 0, -1.42109e-14, 0, 1, 0, 1.42109e-14, 0, 1, 4.76837e-07, 0, 0.224696)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="gate_complex3/Area3D2"]
+transform = Transform3D(1, 0, -1.79767e-12, 0, 1, 0, 1.79767e-12, 0, 1, -0.00802588, 0.247009, -0.228242)
+shape = SubResource("BoxShape3D_rfw6b")
+
+[node name="Label3D3" type="Label3D" parent="gate_complex3"]
+transform = Transform3D(-1, 0, -3.08216e-08, 0, 1, 0, 3.08216e-08, 0, -1, 0.00642514, 1.15453, 0.00244999)
+text = "TCP/UDP"
+
+[node name="XRNode3D" parent="." instance=ExtResource("7_6bnuu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.06734, 0.110429, 7.41548)
+
+[connection signal="area_entered" from="BinaryGame/Area3D" to="." method="_on_area_3d_area_entered"]
+[connection signal="area_entered" from="gate_complex2/Area3D" to="." method="_on_area_3d_area_entered2"]
+[connection signal="area_entered" from="gate_complex2/Area3D2" to="." method="_on_area_3d_2_area_entered"]
+[connection signal="area_entered" from="gate_complex3/Area3D2" to="." method="_on_area_3d_2_area_entered"]

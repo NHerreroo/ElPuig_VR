@@ -12,6 +12,7 @@ func spawn_packet():
 	get_tree().root.add_child(newpacket)
 
 func _ready():
+	Global.playercollider = false
 	reset_game()
 
 func reset_game():
