@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://bm3l3w375xf5o"]
+[gd_scene load_steps=38 format=3 uid="uid://bm3l3w375xf5o"]
 
 [ext_resource type="Script" path="res://Scenes/Games/Pipes/pipe_game.gd" id="1_1wwfm"]
 [ext_resource type="PackedScene" uid="uid://bmea15g3rg5tw" path="res://KenneyAssets/kenney_survival-kit/Models/FBX format/rock-a.fbx" id="2_5gcb1"]
@@ -25,7 +25,9 @@
 [ext_resource type="PackedScene" uid="uid://k2ewet4dny0x" path="res://KenneyAssets/kenney_space-kit/Models/DAE format/rock_largeA.dae" id="21_pe73p"]
 [ext_resource type="AudioStream" uid="uid://dte77gyvhtkhg" path="res://Sounds/Correct.mp3" id="26_r12lq"]
 [ext_resource type="PackedScene" uid="uid://dob0785i5s1r6" path="res://Scenes/Player.tscn" id="27_7ytna"]
+[ext_resource type="PackedScene" uid="uid://clujaf3u776a3" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.tscn" id="27_8owvu"]
 [ext_resource type="AudioStream" uid="uid://ceveawdq1py14" path="res://Sounds/Incorrect.mp3" id="27_tp6ph"]
+[ext_resource type="PackedScene" uid="uid://djv3bbh08puce" path="res://Scenes/EndScene.tscn" id="28_ovfsd"]
 
 [sub_resource type="Environment" id="Environment_gki4l"]
 background_mode = 1
@@ -62,12 +64,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 script = ExtResource("1_1wwfm")
 
 [node name="SCORE" type="Label3D" parent="."]
-transform = Transform3D(1.65978, 0, 1.65978, 0, 2.34728, 0, -1.65978, 0, 1.65978, 4.44788, 1.72739, 0)
+transform = Transform3D(1.65978, 0, 1.65978, 0, 2.34728, 0, -1.65978, 0, 1.65978, 4.44788, 2.11666, 0)
 billboard = 1
 text = "SCORE:"
 
 [node name="Time" type="Label3D" parent="."]
-transform = Transform3D(1.65978, 0, 1.65978, 0, 2.34728, 0, -1.65978, 0, 1.65978, 4.44788, 2.56875, 0)
+transform = Transform3D(1.65978, 0, 1.65978, 0, 2.34728, 0, -1.65978, 0, 1.65978, 4.44788, 3.05214, 0)
 billboard = 1
 text = "SCORE:"
 
@@ -552,3 +554,11 @@ stream = ExtResource("27_tp6ph")
 
 [node name="XRNode3D" parent="." instance=ExtResource("27_7ytna")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.41316, 0.11043, 4.04212)
+
+[node name="Viewport2Din3D" parent="." instance=ExtResource("27_8owvu")]
+transform = Transform3D(0.0668216, 0, 0.0668216, 0, 0.0945, 0, -0.0668216, 0, 0.0668216, 4.46468, 0.843165, 0.036458)
+screen_size = Vector2(28.275, 17.99)
+scene = ExtResource("28_ovfsd")
+viewport_size = Vector2(1150, 700)
+update_mode = 0
+scene_properties_keys = PackedStringArray("end_scene.gd")

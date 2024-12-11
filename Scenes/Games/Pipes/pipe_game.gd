@@ -1,12 +1,12 @@
 extends Node3D
 
 var packet = preload("res://Scenes/Games/Pipes/PipePacket.tscn")
-var time = 5
+var time = 10
 
 func _ready() -> void:
 	Global.playercollider = false
 	timer()
-	
+	$Viewport2Din3D.visible = false
 	Global.score = 0
 	Global.current_packet_type
 	Global.is_packet_instanciated = false
@@ -22,8 +22,7 @@ func _process(delta: float) -> void:
 	$Time.text = "Tiempo: " + str(time)
 	if time == 0:
 		Global.ended = true
-		await get_tree().create_timer(2).timeout
-		get_tree().change_scene_to_file("res://Scenes/main.tscn")
+		$Viewport2Din3D.visible = true
 	if Global.is_correct == true:
 		$Correct.play()
 	elif Global.is_correct == false:

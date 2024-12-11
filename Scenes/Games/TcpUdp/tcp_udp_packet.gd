@@ -101,6 +101,8 @@ func _ready() -> void:
 	$"../Clue".text = packet
 
 func _process(delta: float) -> void:
+	if Global.ended == true:
+		get_parent().queue_free()
 	if $"..".position.x >= 1.7:
 		$"..".position.y = 5
 		$"..".position.x -= speed
@@ -117,7 +119,7 @@ func _on_area_3d_area_entered(area: Area3D) -> void:
 	if area.is_in_group("UDP"):
 		if type == 1: #udp
 			Global.score += randi_range(20,40)
-			correct.play()
+			
 		else:
 			incorrect.play()
 		get_parent().queue_free()

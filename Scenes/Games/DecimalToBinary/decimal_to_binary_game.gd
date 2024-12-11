@@ -3,7 +3,7 @@ extends Node3D
 var decimal_num: int
 var binary_combination: Array = []  # Mantendrá los valores 0 o 1 en orden
 var total: int = 0
-var time = 5
+var time = 15
 
 var packet = preload("res://Scenes/Games/DecimalToBinary/pickable_Packet_Binary.tscn")
 
@@ -13,6 +13,7 @@ func spawn_packet():
 	get_tree().root.add_child(newpacket)
 
 func _ready():
+	$Viewport2Din3D2.visible = false
 	Global.playercollider = false
 	start_timer()
 	reset_game()
@@ -44,7 +45,9 @@ func get_random_decimal() -> int:
 
 # Actualiza la combinación binaria
 func update_binary(index: int, value: int, area_value: int) -> void:
-	spawn_packet()
+	if Global.ended == false:
+		spawn_packet()
+
 	if binary_combination[index] == 0:  # Solo suma si el área no estaba ocupada
 		binary_combination[index] = value
 		total += area_value
@@ -64,8 +67,7 @@ func _process(delta: float) -> void:
 	$score.text = str(Global.score)
 	if time <= 0:
 		Global.ended = true
-		await get_tree().create_timer(1).timeout
-		get_tree().change_scene_to_file("res://Scenes/main.tscn")
+		$Viewport2Din3D2.visible = true
 	check_combination()
 	
 func check_combination() -> void:

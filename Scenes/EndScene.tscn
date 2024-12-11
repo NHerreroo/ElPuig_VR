@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=3 uid="uid://djv3bbh08puce"]
+
+[ext_resource type="Script" path="res://Scenes/end_scene.gd" id="1_03dqe"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_03dqe")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0, 0, 0, 0.839216)
+
+[node name="Label" type="Label" parent="."]
+offset_left = 311.0
+offset_top = 136.0
+offset_right = 840.0
+offset_bottom = 289.0
+theme_override_font_sizes/font_size = 50
+text = "PUNTUCAIÓN: 0"
+
+[node name="Button" type="Button" parent="."]
+offset_left = 258.0
+offset_top = 378.0
+offset_right = 895.0
+offset_bottom = 565.0
+theme_override_font_sizes/font_size = 50
+text = "Volver al Lobby"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

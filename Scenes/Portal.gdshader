@@ -18,7 +18,7 @@ float angle_between(vec3 vec, vec3 reference) {
     return atan(length(cross(vec, reference)), dot(vec, reference));
 }
 
-float signed_angle_between(vec3 vec, vec3 reference, vec3 normal) {	
+float signed_angle_between(vec3 vec, vec3 reference, vec3 normal) {
     vec3 cross_to = cross(vec, reference);
 	float unsigned_angle = atan(length(cross_to), dot(vec, reference));
 	return (dot(cross_to, normal) < 0.) ? unsigned_angle : -unsigned_angle;
@@ -39,7 +39,7 @@ vec2 portal_uv(vec3 ray_dir, vec3 ray_start, vec3 portal_center, vec3 portal_nor
     float center_angle = asin(length(initial_offset) / sin_ratio);
     float lateral_angle = PI - radius_angle - center_angle;
     float lateral_distance = sin_ratio * sin(lateral_angle);
-    
+
     vec3 flat_intersection_offset = initial_offset + lateral_distance * lateral_direction;
     float portal_angle = signed_angle_between(normalize(flat_intersection_offset), -portal_seam, portal_normal);
     float depth = abs(dot(ray_dir, portal_normal)) / length(lateral_ray) * lateral_distance;
